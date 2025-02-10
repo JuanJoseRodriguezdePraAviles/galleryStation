@@ -1,0 +1,21 @@
+header {
+    background-color: #005227;
+    width: 100%;
+
+    & .title, & .avatar {
+        display: inline-block;
+    }
+    & .title {
+        width: 10rem;
+    }
+    & .avatar {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-image: url('./src/assets/avatar.jpg');
+        background-size: cover;
+    
+        
+    }
+}
+
