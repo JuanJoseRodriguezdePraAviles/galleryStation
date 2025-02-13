@@ -1,0 +1,24 @@
+.searchFilterContainer {
+    background-color: #038554;
+    width: 100%;
+    height: 12.375rem;
+
+    & .searchInput{
+        height: 3.5rem;
+        width: 80%;
+        border: none;
+        border-radius: 10%/50%;
+        opacity: 0.75;
+    }
+
+    & .filterInput {
+        
+    }
+
+    & .arrowUp {
+        background-image: url('./src/assets/ArrowUp.svg');
+        background-size: cover;
+
+    }
+
+}

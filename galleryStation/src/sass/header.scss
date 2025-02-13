@@ -1,19 +1,29 @@
 header {
     background-color: #005227;
     width: 100%;
+    height: 3.75rem;
 
-    & .title, & .avatar {
+    & .title, & .like {
         display: inline-block;
     }
     & .title {
-        width: 10rem;
+        position: relative;
+        top:-0.5rem;
+        height: 2rem;
+        width: 80%;
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        
+
     }
-    & .avatar {
+    & .like {
         width: 2rem;
         height: 2rem;
-        border-radius: 50%;
-        background-image: url('./src/assets/avatar.jpg');
+        background-image: url('./src/assets/Heart.svg');
         background-size: cover;
+        margin-top: 1rem;
+        margin-left: 1rem;
     
         
     }

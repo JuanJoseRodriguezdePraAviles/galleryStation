@@ -1,18 +1,43 @@
 header {
   background-color: #005227;
   width: 100%;
+  height: 3.75rem;
 }
-header .title, header .avatar {
+header .title, header .like {
   display: inline-block;
 }
 header .title {
-  width: 10rem;
+  position: relative;
+  top: -0.5rem;
+  height: 2rem;
+  width: 80%;
+  color: white;
+  font-size: 24px;
+  text-align: center;
 }
-header .avatar {
+header .like {
   width: 2rem;
   height: 2rem;
-  border-radius: 50%;
-  background-image: url("./src/assets/avatar.jpg");
+  background-image: url("./src/assets/Heart.svg");
+  background-size: cover;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.searchFilterContainer {
+  background-color: #038554;
+  width: 100%;
+  height: 12.375rem;
+}
+.searchFilterContainer .searchInput {
+  height: 3.5rem;
+  width: 80%;
+  border: none;
+  border-radius: 10%/50%;
+  opacity: 0.75;
+}
+.searchFilterContainer .arrowUp {
+  background-image: url("./src/assets/ArrowUp.svg");
   background-size: cover;
 }
 

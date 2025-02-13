@@ -6,7 +6,7 @@ function Header() {
             <div className='title'>
                 <p>Gallery Station</p>
             </div>
-            <div className='avatar'>
+            <div className='like'>
             </div>
         </header>
     );
