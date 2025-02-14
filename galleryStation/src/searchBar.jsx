@@ -1,22 +1,34 @@
 import './css/style.css';
+import React, { useState } from 'react';
 
 function SearchBar() {
+    const [isOpen, setOpen] = useState(false);
     return (
         <>
             <div className="searchFilterContainer">
-                <form>
-                    <input className="searchInput" type="search"></input>
-                    <select>
-                        <option value="">Import Date</option>
-                        <option value="">Import Date</option>
-                        <option value="">Width</option>
-                        <option value="">Width</option>
-                        <option value="">Height</option>
-                        <option value="">Height</option>
-                        <option value="">Likes</option>
-                        <option value="">Likes</option>
-                    </select>
-                </form>
+                <div className="searchContainer">
+                
+                    <p>Search photos</p>
+                    <img src="./src/assets/searchIcon.svg"/>
+                </div>
+                
+                <div className='filterContainer'>
+                {isOpen? (
+                    <>
+                        <div>Import Date</div>
+                        <div>Import Date</div>
+                        <div>Width</div>
+                        <div>Width</div>
+                        <div>Height</div>
+                        <div>Height</div>
+                        <div>Likes</div>
+                        <div>Likes</div>
+                    </>
+                ):
+                    <p>Import Date <img src="./src/assets/ArrowUp.svg"/></p>
+                }
+                    <img src="./src/assets/selectArrow.svg"/>
+                </div>
             </div>
         </>
     );

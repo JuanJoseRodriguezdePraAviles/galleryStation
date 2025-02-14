@@ -28,17 +28,56 @@ header .like {
   background-color: #038554;
   width: 100%;
   height: 12.375rem;
+  display: inline-block;
+  align-content: center;
+  align-items: center;
 }
-.searchFilterContainer .searchInput {
+.searchFilterContainer .searchContainer, .searchFilterContainer .filterContainer {
+  margin-left: 10%;
+  display: inline-block;
+}
+.searchFilterContainer .searchContainer {
+  margin-top: 0 0.25rem;
+  background-color: white;
   height: 3.5rem;
   width: 80%;
   border: none;
   border-radius: 10%/50%;
   opacity: 0.75;
 }
-.searchFilterContainer .arrowUp {
+.searchFilterContainer .searchContainer p, .searchFilterContainer .searchContainer img {
+  display: inline-block;
+}
+.searchFilterContainer .searchContainer p {
+  margin-left: 5%;
+  width: 80%;
+}
+.searchFilterContainer .searchContainer img {
+  position: relative;
+  top: 0.75rem;
+  height: 2rem;
+}
+.searchFilterContainer .filterContainer {
+  margin-top: 1.2rem;
+  background-color: white;
+  opacity: 0.75;
+  height: 3.5rem;
+  width: 80%;
+  text-align: left;
+}
+.searchFilterContainer .filterContainer p {
+  display: inline-block;
+  width: 80%;
+  font-family: "Inter";
+  margin-top: 1rem;
+  margin-left: 5%;
+}
+.searchFilterContainer .filterContainer p .arrowUp {
   background-image: url("./src/assets/ArrowUp.svg");
   background-size: cover;
+}
+.searchFilterContainer .filterContainer img {
+  display: inline-block;
 }
 
 * {
