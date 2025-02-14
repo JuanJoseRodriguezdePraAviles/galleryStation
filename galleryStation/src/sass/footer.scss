@@ -1,0 +1,45 @@
+footer {
+    padding: 1.25rem 1rem;
+    background-color: #005227;
+    height: 7.9375rem;
+
+    & .description-container, .socials-container { 
+        display: inline-block;
+        width: 50%;
+
+        & h1 {
+            font-size: 1.5rem;
+            color: white;
+
+        }
+
+        & p { 
+            color: white;
+        }
+
+        & img {
+            display: inline-block;
+        }
+
+        
+        
+    }
+    & .description-container {
+        & p {
+            font-size: 0.8rem;
+            padding-right: 1rem;
+            margin-left: 0.5rem;
+        }
+    }
+
+    & .socials-container {
+        position: relative;
+        top: -1.5rem;
+        & p {
+            font-size: 0.8rem;
+            display: inline-block;
+            margin: 1rem 0 0 0.1rem;
+        }
+    }
+
+}

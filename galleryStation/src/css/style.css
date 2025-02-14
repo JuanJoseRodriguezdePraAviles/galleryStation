@@ -80,6 +80,66 @@ header .like {
   display: inline-block;
 }
 
+.bg-blue {
+  background-color: #A4FFF7;
+  height: auto;
+}
+
+.imageContainer {
+  width: 90%;
+  margin: 0 4.6%;
+  padding: 1.5rem 0;
+}
+.imageContainer img {
+  width: 100%;
+}
+.imageContainer .imageControls {
+  background-color: #038554;
+  height: 4.625rem;
+  align-content: center;
+  position: relative;
+  top: -0.225rem;
+}
+.imageContainer .imageControls img {
+  margin: 0 20%;
+  display: inline-block;
+  width: 2rem;
+}
+
+footer {
+  padding: 1.25rem 1rem;
+  background-color: #005227;
+  height: 7.9375rem;
+}
+footer .description-container, footer .socials-container {
+  display: inline-block;
+  width: 50%;
+}
+footer .description-container h1, footer .socials-container h1 {
+  font-size: 1.5rem;
+  color: white;
+}
+footer .description-container p, footer .socials-container p {
+  color: white;
+}
+footer .description-container img, footer .socials-container img {
+  display: inline-block;
+}
+footer .description-container p {
+  font-size: 0.8rem;
+  padding-right: 1rem;
+  margin-left: 0.5rem;
+}
+footer .socials-container {
+  position: relative;
+  top: -1.5rem;
+}
+footer .socials-container p {
+  font-size: 0.8rem;
+  display: inline-block;
+  margin: 1rem 0 0 0.1rem;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
