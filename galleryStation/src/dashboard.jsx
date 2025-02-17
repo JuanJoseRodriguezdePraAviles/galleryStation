@@ -2,7 +2,8 @@ import './css/style.css';
 import React, { useState, useEffect } from 'react';
 import ImageContainer from './ImageContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchSlice } from './features/SearchSlice';
+import { fetchPhotos } from './features/SearchSlice';
+
 
 
 
@@ -10,29 +11,34 @@ function Dashboard() {
 
     const dispatch = useDispatch();
 
-    const images = useSelector((state) => state.search.items);
-    console.log(images);
-    const { filteredImages, setFilteredImages } = useState(images);
+    const [images, setImages] = useState([]);
+    const updatedImages = useSelector((state) => state.search.images);
+    const [filteredImages, setFilteredImages] = useState(images);
+
 
     useEffect(() => {
-        dispatch(searchSlice.actions.listAll());
+
+        dispatch(fetchPhotos());
     }, [dispatch]);
+
+    useEffect(() => {
+        if (updatedImages && updatedImages.length > 0) {
+            setImages(updatedImages);
+        }
+    }, [updatedImages]);
     return (
         <>
 
 
             <div className='bg-blue'>
-                <ImageContainer image="./src/assets/mosque.jpg">
 
-                </ImageContainer>
+                {images.map(image => (
+                    <>
+                        <ImageContainer image={image.links.download}>
 
-                <ImageContainer image="./src/assets/dog.jpg">
-
-                </ImageContainer>
-
-                <ImageContainer image="./src/assets/love.jpg">
-
-                </ImageContainer>
+                        </ImageContainer>
+                    </>
+                ))}
             </div>
         </>
     );
