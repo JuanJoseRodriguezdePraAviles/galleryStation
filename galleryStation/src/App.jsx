@@ -1,11 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
+
 import Header from './header';
-import SearchBar from './searchBar';
+import SearchBar from './SearchBar';
 import Dashboard from './dashboard';
-import Footer from './footer';
-//import ImageContainer from './imageContainer';
+import Footer from './Footer';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,13 +14,13 @@ function App() {
 
       </Header>
       <SearchBar>
-        
+
       </SearchBar>
       <Dashboard>
       </Dashboard>
 
       <Footer>
-        
+
       </Footer>
     </>
   )
