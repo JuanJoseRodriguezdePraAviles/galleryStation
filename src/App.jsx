@@ -34,15 +34,21 @@ function App() {
   const handleSearch = (event) => {
 
     const inputNode = event.target.previousElementSibling;
+    console.log("input value");
+    console.log(inputNode.value);
     dispatch(searchPhotos(inputNode.value));
 
-    const imagesSearched = images.filter((image) => {
+    const imagesSearched = images;
+    /*const imagesSearched = images.filter((image) => {
       return image.slug.includes(inputNode.value.toLowerCase());
-    });
+    });*/
+    console.log("images searched");
+    console.log(imagesSearched);
     setFilteredImages(imagesSearched);
   }
 
-
+  console.log("Filtered images");
+  console.log(filteredImages);
   return (
     <>
       <Header>
