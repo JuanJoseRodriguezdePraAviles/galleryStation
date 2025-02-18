@@ -45,12 +45,16 @@ header .like {
   border-radius: 10%/50%;
   opacity: 0.75;
 }
-.searchFilterContainer .searchContainer p, .searchFilterContainer .searchContainer img {
+.searchFilterContainer .searchContainer input, .searchFilterContainer .searchContainer img {
   display: inline-block;
 }
-.searchFilterContainer .searchContainer p {
+.searchFilterContainer .searchContainer input {
   margin-left: 5%;
   width: 80%;
+  border: none;
+}
+.searchFilterContainer .searchContainer input:focus {
+  outline: none;
 }
 .searchFilterContainer .searchContainer img {
   position: relative;

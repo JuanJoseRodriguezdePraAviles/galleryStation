@@ -5,14 +5,15 @@
     display: inline-block;
     align-content: center;
     align-items: center;
-    
-    & .searchContainer, & .filterContainer {
+
+    & .searchContainer,
+    & .filterContainer {
         margin-left: 10%;
         display: inline-block;
     }
-    
 
-    & .searchContainer{
+
+    & .searchContainer {
         margin-top: 0.0.25rem;
         background-color: white;
         height: 3.5rem;
@@ -21,13 +22,21 @@
         border-radius: 10%/50%;
         opacity: 0.75;
 
-        & p, & img {
+        & input,
+        & img {
             display: inline-block;
         }
-        & p {
+
+        & input {
             margin-left: 5%;
             width: 80%;
+            border: none;
         }
+
+        & input:focus {
+            outline: none;
+        }
+
         & img {
             position: relative;
             top: 0.75rem;
@@ -37,19 +46,20 @@
 
     & .filterContainer {
         margin-top: 1.2rem;
-       background-color: white;
-       opacity: 0.75;
-       height: 3.5rem;
-       width: 80%;
-       text-align: left;
-       & p {
-        display: inline-block;
+        background-color: white;
+        opacity: 0.75;
+        height: 3.5rem;
         width: 80%;
-        font-family: 'Inter';
-        margin-top: 1rem;
-        margin-left: 5%;
-       
-        & .arrowUp {
+        text-align: left;
+
+        & p {
+            display: inline-block;
+            width: 80%;
+            font-family: 'Inter';
+            margin-top: 1rem;
+            margin-left: 5%;
+
+            & .arrowUp {
                 background-image: url('./src/assets/ArrowUp.svg');
                 background-size: cover;
 
@@ -57,10 +67,10 @@
         }
 
         & img {
-            display:inline-block;
+            display: inline-block;
         }
     }
 
-    
+
 
 }
