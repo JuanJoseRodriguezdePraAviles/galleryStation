@@ -12,20 +12,19 @@ export const fetchPhotos = createAsyncThunk(
     }
 );
 
+export const searchRandomPhotos = createAsyncThunk(
+    'photos/searchRandomPhotos',
+    async () => {
+        console.log("RANDOM");
+        const response = await fetch(`https://api.unsplash.com/photos/random?count=10&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg`);
+        const data = await response.json();
+        return data;
+    }
+);
+
 export const searchPhotos = createAsyncThunk(
     'photos/searchPhotos',
     async (query) => {
-        if (!query) {
-            console.log("RANDOM");
-            const response = await fetch(`https://api.unsplash.com/photos/random?count=10&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg`);
-            const data = await response.json();
-            console.log(data);
-            imagesCollected = data;
-            console.log("images collected");
-            console.log(imagesCollected);
-            return imagesCollected;
-        }
-        console.log("Normal search");
         const imagesWanted = 5;
         let numImagesCollected = 0;
         let imagesCollected = [];
@@ -66,6 +65,8 @@ const searchSlice = createSlice(
             builder.addCase(fetchPhotos.fulfilled, (state, action) => {
                 state.images = action.payload;
             }).addCase(searchPhotos.fulfilled, (state, action) => {
+                state.images = action.payload;
+            }).addCase(searchRandomPhotos.fulfilled, (state, action) => {
                 state.images = action.payload;
             });
         }

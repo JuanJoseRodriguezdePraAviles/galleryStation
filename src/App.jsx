@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPhotos, searchPhotos } from './features/SearchSlice';
+import { fetchPhotos, searchRandomPhotos, searchPhotos } from './features/SearchSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +36,12 @@ function App() {
     const inputNode = event.target.previousElementSibling;
     console.log("input value");
     console.log(inputNode.value);
-    dispatch(searchPhotos(inputNode.value));
+    if(!inputNode.value){
+      dispatch(searchRandomPhotos(inputNode.value));
+    } else {
+      dispatch(searchPhotos(inputNode.value));
+    }
+    
 
     const imagesSearched = images;
     /*const imagesSearched = images.filter((image) => {
