@@ -15,13 +15,17 @@ function InspectWindow(props) {
     };
     let isSaved = true;
     const handleEdit = () => {
-        isSaved = !isSaved;
+        console.log("Handle edit");
         
+        
+        isSaved = !isSaved;
+
+
     }
     return (
         <>
             <div id={props.image.id} className="inspect-window hide-window">
-               
+
                 <div className='static-data-container'>
                     <p>Width:{props.image.width}</p>
                     <p>Height:{props.image.height}</p>
@@ -30,21 +34,15 @@ function InspectWindow(props) {
                 </div>
                 {useLocation().pathname !== '/' ? <button className='btn-container' onClick={handleEdit}>Edit description</button> : <></>}
 
-                {isSaved ? <>
-                    <div className='description-container'>
-                        <h2>Description</h2>
-                        <p>{props.image.description}</p>
-                    </div>
-                    <button className='exit' onClick={closeInspect}><i className="fa-solid fa-x icon"></i></button></>
-                    :
-                    <>
-                        <div className='edit-description-container'>
-                            <h2>Description</h2>
-                            <p>{props.image.description}</p>
-                        </div>
-                        <button className='exit' onClick={closeInspect}><i class="fa-solid fa-x icon"></i></button>
-                    </>
-                }
+                
+                    
+                <div className='description-container'>
+                    <h2>Description</h2>
+                    <input type='text' className='description-field' value={props.image.description}></input>
+                </div>
+                <button className='exit' onClick={closeInspect}><i className="fa-solid fa-x icon"></i></button>
+                    
+                
             </div>
 
         </>

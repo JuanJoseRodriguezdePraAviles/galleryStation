@@ -196,6 +196,9 @@ footer .socials-container p {
 .inspect-window .edit-description-container {
   background-color: #038554;
 }
+.inspect-window .edit-description-container .description-field {
+  background-color: #038554;
+}
 
 .hide-window {
   display: none;
