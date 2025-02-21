@@ -2,30 +2,45 @@ header {
     background-color: #005227;
     width: 100%;
     height: 3.75rem;
+    text-align: center;
 
-    & .title, & .like {
+    & .title,
+    & .like,
+    & a {
         display: inline-block;
     }
+
     & .title {
         position: relative;
-        top:-0.5rem;
+        top: -0.5rem;
         height: 2rem;
         width: 80%;
         color: white;
         font-size: 24px;
         text-align: center;
-        
+
+
 
     }
-    & .like {
+
+    & .heart {
         width: 2rem;
         height: 2rem;
-        background-image: url('./src/assets/Heart.svg');
-        background-size: cover;
         margin-top: 1rem;
+        margin-right: 1rem;
         margin-left: 1rem;
-    
-        
+        background-size: cover;
+    }
+
+    & .disliked {
+
+        background-image: url('./src/assets/Heart.svg');
+
+    }
+
+    & .liked {
+        background-image: url('./src/assets/like.svg');
+
+
     }
 }
-

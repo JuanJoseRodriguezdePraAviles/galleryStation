@@ -2,8 +2,9 @@ header {
   background-color: #005227;
   width: 100%;
   height: 3.75rem;
+  text-align: center;
 }
-header .title, header .like {
+header .title, header .like, header a {
   display: inline-block;
 }
 header .title {
@@ -15,13 +16,19 @@ header .title {
   font-size: 24px;
   text-align: center;
 }
-header .like {
+header .heart {
   width: 2rem;
   height: 2rem;
-  background-image: url("./src/assets/Heart.svg");
-  background-size: cover;
   margin-top: 1rem;
+  margin-right: 1rem;
   margin-left: 1rem;
+  background-size: cover;
+}
+header .disliked {
+  background-image: url("./src/assets/Heart.svg");
+}
+header .liked {
+  background-image: url("./src/assets/like.svg");
 }
 
 .searchFilterContainer {
@@ -142,6 +149,61 @@ footer .socials-container p {
   font-size: 0.8rem;
   display: inline-block;
   margin: 1rem 0 0 0.1rem;
+}
+
+.favouriteTitle {
+  background-color: #A4FFF7;
+  color: #038554;
+  text-align: center;
+}
+
+.inspect-window {
+  position: fixed;
+  top: 5rem;
+  left: 2.5rem;
+  background-color: #005227;
+  height: 20rem;
+  width: 80%;
+  padding: 1rem;
+}
+.inspect-window p, .inspect-window h2 {
+  color: white;
+}
+.inspect-window .static-data-container {
+  display: inline-block;
+  width: 50%;
+}
+.inspect-window .btn-container {
+  background-color: #03BB85;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 20%;
+  padding: 0.5rem;
+}
+.inspect-window .exit {
+  border-radius: 50%;
+  background-color: #FF0000;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: fixed;
+  top: 6rem;
+  right: 3.5rem;
+}
+.inspect-window .exit .icon {
+  color: white;
+}
+.inspect-window .edit-description-container {
+  background-color: #038554;
+}
+
+.hide-window {
+  display: none;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 * {

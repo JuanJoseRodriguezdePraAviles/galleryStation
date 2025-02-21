@@ -1,9 +1,10 @@
-import './css/style.css';
+import './../css/style.css';
 import ImageContainer from './ImageContainer';
+import { useLocation } from 'react-router-dom';
 
 
 function Dashboard(props) {
-
+    console.log(props.images);
 
     return (
         <>
@@ -12,7 +13,7 @@ function Dashboard(props) {
                     props.filteredImages.map(image => (
 
                         <>
-                            <ImageContainer image={image.links.download}>
+                            <ImageContainer key={image.id} image={image.links?.download || image.image} width={image.width} height={image.height} likes={image.likes} date={image.date} description={image.alt_description} >
 
                             </ImageContainer>
                         </>
@@ -20,7 +21,7 @@ function Dashboard(props) {
                     :
                     props.images.map(image => (
                         <>
-                            <ImageContainer image={image.links.download}>
+                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image} width={image.width} height={image.height} likes={image.likes} date={image.links? image.created_at : image.date} description={image.links? image.alt_description : image.description}>
 
                             </ImageContainer>
                         </>
@@ -28,6 +29,8 @@ function Dashboard(props) {
                 }
 
             </div>
+
+
         </>
     );
 }

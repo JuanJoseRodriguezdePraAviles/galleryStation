@@ -1,0 +1,58 @@
+.inspect-window {
+    position: fixed;
+    top: 5rem;
+    left: 2.5rem;
+    background-color: #005227;
+    height: 20rem;
+    width: 80%;
+    padding: 1rem;
+
+    & p,
+    & h2 {
+        color: white;
+    }
+
+    & .static-data-container {
+        display: inline-block;
+        width: 50%;
+    }
+
+    & .btn-container {
+        background-color: #03BB85;
+        color: white;
+        outline: none;
+        border: none;
+        border-radius: 20%;
+        padding: 0.5rem;
+
+    }
+
+    .exit {
+        border-radius: 50%;
+        background-color: #FF0000;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: fixed;
+        top: 6rem;
+        right: 3.5rem;
+
+        & .icon {
+            color: white;
+        }
+    }
+
+    & .edit-description-container {
+        background-color: #038554;
+    }
+
+
+}
+
+.hide-window {
+    display: none;
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
