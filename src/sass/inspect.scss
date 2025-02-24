@@ -44,9 +44,17 @@
     & .edit-description-container {
         background-color: #038554;
 
-        & .description-field {
-            background-color: #038554;
-        }
+        
+    }
+
+    & .description-field {
+        background-color: #038554;
+        height: 10rem;
+        width: 100%;
+        border:none;
+        text-align: left;
+        
+
     }
 
 
