@@ -41,7 +41,6 @@ export const searchPhotos = createAsyncThunk(
                 break;
             }
         }
-
         return imagesCollected;
     }
 );

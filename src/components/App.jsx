@@ -1,5 +1,5 @@
-import Home from './Home';
-import Favourite from './Favourite';
+import Home from '../pages/Home';
+import Favourite from '../pages/Favourite';
 import Header from './Header';
 import Footer from './Footer';
 import InspectWindow from './InspectWindow';

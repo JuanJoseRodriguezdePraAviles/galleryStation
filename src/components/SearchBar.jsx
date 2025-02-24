@@ -5,6 +5,9 @@ import React, { useState } from 'react';
 function SearchBar(props) {
     const [isOpen, setOpen] = useState(false);
 
+    const handleSelect = () => {
+        //setOpen(true);
+    }
 
     return (
         <>
@@ -15,7 +18,7 @@ function SearchBar(props) {
                     <img src="./src/assets/searchIcon.svg" onClick={props.handleSearch} />
                 </div>
 
-                <div className='filterContainer'>
+                <div className='filterContainer' onClick={handleSelect}>
                     {isOpen ? (
                         <>
                             <div>Import Date</div>

@@ -1,9 +1,11 @@
 import './../css/style.css';
 import React, { useState, useEffect } from 'react';
 import InspectWindow from './InspectWindow';
+import { useDispatch } from 'react-redux';
 
 function ImageContainer(props) {
     const [like, setLike] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         {
@@ -21,9 +23,9 @@ function ImageContainer(props) {
         const newLikeState = !like;
         setLike(newLikeState);
         if (newLikeState) {
-            console.log("IMAGE ABOUT TO BE SAVED");
-            console.log(props);
             icon = "./src/assets/like.svg";
+            console.log("DATA TO SAVE");
+            console.log(props);
             localStorage.setItem(props.id,
                 JSON.stringify(props)
             );
@@ -34,9 +36,13 @@ function ImageContainer(props) {
     }
 
     const handleInspect = () => {
+
         document.getElementById(props.id).setAttribute('class', 'inspect-window');
         document.body.setAttribute('class', 'stop-scrolling');
+
     }
+
+
 
     let icon;
     if (like) {

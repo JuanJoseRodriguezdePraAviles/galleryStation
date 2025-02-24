@@ -1,19 +1,18 @@
 
-import SearchBar from './SearchBar';
-import Dashboard from './Dashboard';
+import SearchBar from '../components/SearchBar';
+import Dashboard from '../components/Dashboard';
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPhotos, searchRandomPhotos, searchPhotos } from '../features/SearchSlice';
+import { fetchPhotos, searchRandomPhotos, searchPhotos } from '../redux/slices/SearchSlice';
 
 
 
 function Home() {
     const dispatch = useDispatch();
 
-    const [images, setImages] = useState([]);
     const updatedImages = useSelector((state) => state.search.images);
-    const [filteredImages, setFilteredImages] = useState(images);
+    const [filteredImages, setFilteredImages] = useState(updatedImages);
     const updatedFilteredImages = useSelector((state) => state.images);
 
 
@@ -23,8 +22,8 @@ function Home() {
     }, [dispatch]);
 
     useEffect(() => {
+        console.log(updatedImages);
         if (updatedImages && updatedImages.length > 0) {
-            setImages(updatedImages);
 
             setFilteredImages(updatedFilteredImages);
         }
@@ -42,18 +41,17 @@ function Home() {
         }
 
 
-        const imagesSearched = images;
+        const imagesSearched = imagesUpdated;
         setFilteredImages(imagesSearched);
     }
 
-
-
+    console.log(updatedImages);
     return (
         <>
             <SearchBar handleSearch={handleSearch}>
             </SearchBar>
 
-            <Dashboard images={images} filteredImages={filteredImages}>
+            <Dashboard images={updatedImages} filteredImages={filteredImages}>
             </Dashboard>
         </>
     );

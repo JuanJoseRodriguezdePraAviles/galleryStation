@@ -1,10 +1,10 @@
-import SearchBar from './SearchBar';
-import Dashboard from './Dashboard';
+import SearchBar from '../components/SearchBar';
+import Dashboard from '../components/Dashboard';
 import './../css/style.css';
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFavouritePhotos } from '../features/FavouritesSlice';
+import { setFavouritePhotos } from '../redux/slices/FavouritesSlice';
 
 
 
@@ -12,7 +12,6 @@ function Favourite() {
     const dispatch = useDispatch();
 
     const images = useSelector((state) => state.favourite.images);
-    const [loadedImages, setLoadedImages] = useState([]);
 
     const [filteredImages, setFilteredImages] = useState(images);
     const updatedFilteredImages = useSelector((state) => state.images);
@@ -20,18 +19,13 @@ function Favourite() {
 
     useEffect(() => {
         let data = [];
-        Object.entries(localStorage).map(([key, valueJSON]) => {
-            data = [...data, JSON.parse(valueJSON)];
-        });
-        dispatch(setFavouritePhotos(data));
+            Object.entries(localStorage).map(([key, valueJSON]) => {
+                data = [...data, JSON.parse(valueJSON)];
+            });
+            dispatch(setFavouritePhotos(data));
     }, [dispatch]);
 
-    useEffect(() => {
-        if (images && images.length > 0) {
-            setLoadedImages(images);
-        }
-    }, [images]);
-
+    
 
 
     const handleSearch = (event) => {
@@ -51,16 +45,18 @@ function Favourite() {
         setFilteredImages(imagesSearched);
     }
 
-
+    
     return (
         <>
             <SearchBar handleSearch={handleSearch}>
             </SearchBar>
             <h2 className='favouriteTitle'>My collection</h2>
-            <Dashboard images={loadedImages}>
+            <Dashboard images={images}>
             </Dashboard>
         </>
     );
 }
+
+
 
 export default Favourite;

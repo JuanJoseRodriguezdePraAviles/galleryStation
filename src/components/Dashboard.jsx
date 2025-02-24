@@ -4,8 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 
 function Dashboard(props) {
-    console.log(props.images);
-
+    console.log(props);
     return (
         <>
             <div className='bg-blue'>
@@ -21,7 +20,7 @@ function Dashboard(props) {
                     :
                     props.images.map(image => (
                         <>
-                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image} width={image.width} height={image.height} likes={image.likes} date={image.links? image.created_at : image.date} description={image.links? image.alt_description : image.description}>
+                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image} width={image.width} height={image.height} likes={image.likes} date={image.links? image.created_at : image.date} description={image.description}>
 
                             </ImageContainer>
                         </>
