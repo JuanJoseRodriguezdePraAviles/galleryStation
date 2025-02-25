@@ -11,7 +11,8 @@ function Dashboard(props) {
                     props.filteredImages.map(image => (
 
                         <>
-                            <ImageContainer key={image.id} image={image.links?.download || image.image} width={image.width} height={image.height} likes={image.likes} date={image.date} description={image.alt_description} >
+                            <ImageContainer key={image.id} image={image.links?.download || image.image} width={image.width}
+                            height={image.height} likes={image.likes} date={image.date} description={image.alt_description} >
 
                             </ImageContainer>
                         </>
@@ -19,7 +20,9 @@ function Dashboard(props) {
                     :
                     props.images.map(image => (
                         <>
-                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image} width={image.width} height={image.height} likes={image.likes} date={image.links? image.created_at : image.date} description={image.description}>
+                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image}
+                                width={image.width} height={image.height} likes={image.likes} date={image.links ? image.created_at : image.date}
+                                description={image.description}>
 
                             </ImageContainer>
                         </>

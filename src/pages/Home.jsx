@@ -22,7 +22,6 @@ function Home() {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log(updatedImages);
         if (updatedImages && updatedImages.length > 0) {
 
             setFilteredImages(updatedFilteredImages);
@@ -45,7 +44,6 @@ function Home() {
         setFilteredImages(imagesSearched);
     }
 
-    console.log(updatedImages);
     return (
         <>
             <SearchBar handleSearch={handleSearch}>

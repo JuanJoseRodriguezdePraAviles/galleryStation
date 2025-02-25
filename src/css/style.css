@@ -72,11 +72,10 @@ header .liked {
 .searchFilterContainer .filterContainer {
   cursor: pointer;
   margin-top: 1.2rem;
-  background-color: white;
-  opacity: 0.75;
   height: 3.5rem;
   width: 80%;
   text-align: left;
+  opacity: 0.75;
 }
 .searchFilterContainer .filterContainer p {
   display: inline-block;
@@ -92,12 +91,52 @@ header .liked {
 .searchFilterContainer .filterContainer img {
   display: inline-block;
 }
+.searchFilterContainer .filterContainer .option-selected {
+  background-color: white;
+  opacity: 0.75;
+  height: 3.5rem;
+}
+.searchFilterContainer .filterContainer .options {
+  background-color: white;
+  position: absolute;
+  z-index: 10;
+  width: 80%;
+  opacity: 1;
+}
+.searchFilterContainer .filterContainer .options .option-container {
+  background-color: white;
+  opacity: 1;
+  width: 80%;
+  height: 3.5rem;
+}
+.searchFilterContainer .filterContainer .options .arrow-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 12%;
+}
 
+@media screen and (min-width: 1200px) {
+  .searchFilterContainer .searchContainer {
+    border-radius: 2.5%/50%;
+  }
+  .searchFilterContainer .searchContainer input {
+    width: 90%;
+  }
+  .searchFilterContainer .filterContainer {
+    text-align: center;
+  }
+}
 .bg-blue {
   background-color: #A4FFF7;
   height: auto;
 }
 
+@media screen and (min-width: 1200px) {
+  .bg-blue {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 .imageContainer {
   width: 90%;
   margin: 0 4.6%;
@@ -121,6 +160,14 @@ header .liked {
   width: 2rem;
 }
 
+@media screen and (min-width: 1200px) {
+  .imageContainer {
+    flex-grow: 1;
+    width: 25%;
+    height: 100%;
+    margin: 0 2%;
+  }
+}
 footer {
   padding: 1.25rem 1rem;
   background-color: #005227;

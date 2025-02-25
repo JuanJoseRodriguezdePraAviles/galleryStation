@@ -2,16 +2,19 @@
     width: 90%;
     margin: 0 4.6%;
     padding: 1.5rem 0;
+
     & img {
         cursor: pointer;
         width: 100%;
     }
+
     & .imageControls {
         background-color: #038554;
         height: 4.625rem;
         align-content: center;
         position: relative;
-        top:-0.225rem;
+        top: -0.225rem;
+
         & img {
             cursor: pointer;
             margin: 0 20%;
@@ -20,5 +23,15 @@
         }
     }
 
-    
+
+}
+
+@media screen and (min-width: 1200px) {
+    .imageContainer {
+        flex-grow: 1;
+        width: 25%;
+        height: 100%;
+
+        margin: 0 2%;
+    }
 }

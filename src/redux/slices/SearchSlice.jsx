@@ -6,7 +6,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const fetchPhotos = createAsyncThunk(
     'photos/fetchPhotos',
     async () => {
-        const response = await fetch('https://api.unsplash.com/photos?client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg');
+        const response = await fetch('https://api.unsplash.com/photos?count=9&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg');
         const data = await response.json();
         return data;
     }

@@ -47,11 +47,10 @@
     & .filterContainer {
         cursor: pointer;
         margin-top: 1.2rem;
-        background-color: white;
-        opacity: 0.75;
         height: 3.5rem;
         width: 80%;
         text-align: left;
+        opacity: 0.75;
 
         & p {
             display: inline-block;
@@ -70,8 +69,53 @@
         & img {
             display: inline-block;
         }
+
+        & .option-selected {
+            background-color: white;
+            opacity: 0.75;
+            height: 3.5rem;
+        }
+
+        & .options {
+            background-color: white;
+            position: absolute;
+            z-index: 10;
+            width: 80%;
+            opacity: 1;
+
+            & .option-container {
+                background-color: white;
+                opacity: 1;
+                width: 80%;
+                height: 3.5rem;
+            }
+
+            & .arrow-icon {
+                position: absolute;
+                top: 1.25rem;
+                right: 12%;
+            }
+        }
+
     }
 
 
 
+}
+
+@media screen and (min-width: 1200px) {
+    .searchFilterContainer {
+        & .searchContainer {
+            border-radius: 2.5%/50%;
+
+            & input {
+                width: 90%;
+            }
+        }
+        & .filterContainer {
+            text-align: center;
+        }
+        
+    }
+    
 }

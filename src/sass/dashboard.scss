@@ -2,3 +2,11 @@
     background-color: #A4FFF7;
     height: auto;
 }
+
+@media screen and (min-width: 1200px) {
+    .bg-blue {
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+}

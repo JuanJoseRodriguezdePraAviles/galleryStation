@@ -3,12 +3,19 @@ import React, { useState } from 'react';
 
 
 function SearchBar(props) {
-    const [isOpen, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [optionSelected, setOptionSelected] = useState('Import Date');
 
-    const handleSelect = () => {
-        //setOpen(true);
+    const handleSelect = (optionText) => {
+        //if(!open){
+        setOptionSelected(optionText);
+        //}
+
+        setOpen(!open);
+
+
     }
-
+    console.log(optionSelected);
     return (
         <>
             <div className="searchFilterContainer">
@@ -18,23 +25,18 @@ function SearchBar(props) {
                     <img src="./src/assets/searchIcon.svg" onClick={props.handleSearch} />
                 </div>
 
-                <div className='filterContainer' onClick={handleSelect}>
-                    {isOpen ? (
-                        <>
-                            <div>Import Date</div>
-                            <div>Import Date</div>
-                            <div>Width</div>
-                            <div>Width</div>
-                            <div>Height</div>
-                            <div>Height</div>
-                            <div>Likes</div>
-                            <div>Likes</div>
-                        </>
-                    ) :
-                        <p>Import Date <img src="./src/assets/ArrowUp.svg" /></p>
-                    }
-                    <img src="./src/assets/selectArrow.svg" />
-                </div>
+                    
+                    <select className='filterContainer'>
+                        <option value='Import Date ↑'>Import Date ↑<img src="./src/assets/ArrowUp.svg" /></option>
+                        <option value='Import Date ↓'>Import Date ↓</option>
+                        <option value='Import Date ↑'>Width ↑</option>
+                        <option value='Import Date ↓'>Width ↓</option>
+                        <option value='Import Date ↑'>Height ↑</option>
+                        <option value='Import Date ↓'>Height ↓</option>
+                        <option value='Import Date ↑'>Likes ↑</option>
+                        <option value='Import Date ↓'>Likes ↓</option>
+                    </select>
+
             </div>
         </>
     );
