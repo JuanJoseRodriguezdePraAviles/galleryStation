@@ -19,8 +19,11 @@ function InspectWindow(props) {
         document.getElementById(props.image.id).setAttribute('class', 'inspect-window hide-window');
         document.body.setAttribute('class', '');
 
-        setDescription(props.image.description);
-        document.getElementsByClassName('description-field')[0].setAttribute('readOnly', true);
+        if(!saved && description!==props.image.description){
+            setDescription(props.image.description);
+        }
+        
+        descriptionFieldRef.current.readOnly = true;
         setSaved(true);
     };
 
@@ -31,7 +34,6 @@ function InspectWindow(props) {
 
     const handleEdit = () => {
         if (!saved) {
-            console.log("Updating description");
             localStorage.setItem(props.image.id,
                 JSON.stringify(
                     {
