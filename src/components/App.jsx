@@ -2,7 +2,6 @@ import Home from '../pages/Home';
 import Favourite from '../pages/Favourite';
 import Header from './Header';
 import Footer from './Footer';
-import InspectWindow from './InspectWindow';
 
 import React, { useState } from 'react';
 import { RouterProvider, createBrowserRouter, Route, Outlet } from 'react-router-dom';

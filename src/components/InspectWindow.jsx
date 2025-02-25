@@ -11,13 +11,13 @@ function InspectWindow(props) {
 
     const [description, setDescription] = useState(props.image.description);
     const [saved, setSaved] = useState(true);
+    
 
     const descriptionFieldRef = useRef();
 
 
     const closeInspect = () => {
-        document.getElementById(props.image.id).setAttribute('class', 'inspect-window hide-window');
-        document.body.setAttribute('class', '');
+        props.setIsInspectVisible(false);
 
         if(!saved && description!==props.image.description){
             setDescription(props.image.description);
@@ -55,9 +55,13 @@ function InspectWindow(props) {
         }
     }, [saved]);
 
+    if(!props.isInspectVisible){
+        return null;
+    }
+
     return (
         <>
-            <div id={props.image.id} className="inspect-window hide-window">
+            <div id={props.image.id} className="inspect-window">
 
                 <div className='static-data-container'>
                     <p>Width:{props.image.width}</p>

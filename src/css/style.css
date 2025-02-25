@@ -208,15 +208,6 @@ footer .socials-container p {
   text-align: left;
 }
 
-.hide-window {
-  display: none;
-}
-
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;

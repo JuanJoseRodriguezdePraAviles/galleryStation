@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 
 
 function Dashboard(props) {
-    console.log(props);
     return (
         <>
             <div className='bg-blue'>

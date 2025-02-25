@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 function ImageContainer(props) {
     const [like, setLike] = useState(false);
     const dispatch = useDispatch();
+    const [isInspectVisible, setIsInspectVisible] = useState(false);
 
     useEffect(() => {
         {
@@ -17,6 +18,14 @@ function ImageContainer(props) {
             })
         };
     }, [props.id]);
+
+    useEffect(() => {
+        if(isInspectVisible){
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    }, [isInspectVisible])
 
 
     const handleSave = () => {
@@ -37,8 +46,7 @@ function ImageContainer(props) {
 
     const handleInspect = () => {
 
-        document.getElementById(props.id).setAttribute('class', 'inspect-window');
-        document.body.setAttribute('class', 'stop-scrolling');
+        setIsInspectVisible(true);
 
     }
 
@@ -59,7 +67,7 @@ function ImageContainer(props) {
                     <img src="./src/assets/download.svg" />
                 </div>
             </div>
-            <InspectWindow image={props} />
+            <InspectWindow key={isInspectVisible?'-open':'close'} image={props} setIsInspectVisible= {setIsInspectVisible}  isInspectVisible={isInspectVisible}/>
         </>
     );
 }
