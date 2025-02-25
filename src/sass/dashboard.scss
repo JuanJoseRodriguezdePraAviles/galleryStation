@@ -1,12 +1,10 @@
 .bg-blue {
     background-color: #A4FFF7;
-    height: auto;
+    height: 50%;
 }
 
 @media screen and (min-width: 1200px) {
     .bg-blue {
-        display: flex;
-        flex-wrap: wrap;
-        
+        column-count: 3;
     }
 }

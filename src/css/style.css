@@ -128,13 +128,12 @@ header .liked {
 }
 .bg-blue {
   background-color: #A4FFF7;
-  height: auto;
+  height: 50%;
 }
 
 @media screen and (min-width: 1200px) {
   .bg-blue {
-    display: flex;
-    flex-wrap: wrap;
+    column-count: 3;
   }
 }
 .imageContainer {
@@ -162,13 +161,16 @@ header .liked {
 
 @media screen and (min-width: 1200px) {
   .imageContainer {
-    flex-grow: 1;
-    width: 25%;
     height: 100%;
-    margin: 0 2%;
+    margin: 0 4%;
+    box-sizing: border-box;
   }
 }
 footer {
+  position: absolute;
+  z-index: 10;
+  top: 100rem;
+  width: 100%;
   padding: 1.25rem 1rem;
   background-color: #005227;
   height: 7.9375rem;
