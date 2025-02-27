@@ -7,15 +7,12 @@ function SearchBar(props) {
     const [optionSelected, setOptionSelected] = useState('Import Date');
 
     const handleSelect = (optionText) => {
-        //if(!open){
         setOptionSelected(optionText);
-        //}
 
         setOpen(!open);
 
 
     }
-    console.log(optionSelected);
     return (
         <>
             <div className="searchFilterContainer">
@@ -26,15 +23,17 @@ function SearchBar(props) {
                 </div>
 
                     
-                    <select className='filterContainer'>
-                        <option value='Import Date ↑'>Import Date ↑<img src="./src/assets/ArrowUp.svg" /></option>
+                    <select className='filterContainer' onChange={(e) => {
+                            props.setSortOption(e.target.value)
+                        }}>
+                        <option value='Import Date ↑'>Import Date ↑</option>
                         <option value='Import Date ↓'>Import Date ↓</option>
-                        <option value='Import Date ↑'>Width ↑</option>
-                        <option value='Import Date ↓'>Width ↓</option>
-                        <option value='Import Date ↑'>Height ↑</option>
-                        <option value='Import Date ↓'>Height ↓</option>
-                        <option value='Import Date ↑'>Likes ↑</option>
-                        <option value='Import Date ↓'>Likes ↓</option>
+                        <option value='Width ↑'>Width ↑</option>
+                        <option value='Width ↓'>Width ↓</option>
+                        <option value='Height ↑'>Height ↑</option>
+                        <option value='Height ↓'>Height ↓</option>
+                        <option value='Likes ↑'>Likes ↑</option>
+                        <option value='Likes ↓'>Likes ↓</option>
                     </select>
 
             </div>

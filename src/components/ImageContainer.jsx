@@ -9,7 +9,6 @@ function ImageContainer(props) {
     const [isInspectVisible, setIsInspectVisible] = useState(false);
 
     useEffect(() => {
-        console.log("Updating like state");
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
                 if (JSON.parse(image).id === props.id) {
@@ -33,7 +32,6 @@ function ImageContainer(props) {
         setLike(newLikeState);
         if (newLikeState) {
             icon = "./src/assets/like.svg";
-            console.log(localStorage.images);
 
             let images = [];
 
@@ -41,7 +39,6 @@ function ImageContainer(props) {
                 images = JSON.parse(localStorage.images);
             }
 
-            console.log(images);
             images.push(JSON.stringify(props));
             localStorage.setItem('images', JSON.stringify(images));
         } else {

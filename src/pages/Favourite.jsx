@@ -19,7 +19,6 @@ function Favourite() {
 
     useEffect(() => {
         let data = [];
-        console.log(localStorage.images);
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
                 data = [...data, JSON.parse(image)];

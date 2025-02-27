@@ -12,8 +12,10 @@ function Home() {
     const dispatch = useDispatch();
 
     const updatedImages = useSelector((state) => state.search.images);
-    const [filteredImages, setFilteredImages] = useState(updatedImages);
-    const updatedFilteredImages = useSelector((state) => state.images);
+    const [sortedImages, setSortedImages] = useState(updatedImages);
+    const updatedSortedImages = useSelector((state) => state.images);
+
+    const [sortOption, setSortOption] = useState('Import Date ↑');
 
 
     useEffect(() => {
@@ -23,10 +25,48 @@ function Home() {
 
     useEffect(() => {
         if (updatedImages && updatedImages.length > 0) {
+            let sortedData = [...updatedImages];
+            switch (sortOption) {
+                case 'Import Date ↑':
+                    sortedData.sort((a, b) => a.created_at > b.created_at ? 1 : - 1)
+                        .map((item) => item);
+                    break;
+                case 'Import Date ↓':
+                    sortedData.sort((a, b) => a.created_at > b.created_at ? -1 : 1)
+                        .map((item) => item);
+                    break;
+                case 'Width ↑':
+                    sortedData.sort((a, b) => a.width > b.width ? 1 : - 1)
+                        .map((item) => item);
+                    break;
+                case 'Width ↓':
+                    sortedData.sort((a, b) => a.width > b.width ? - 1 : 1)
+                        .map((item) => item);
+                    break;
+                case 'Height ↑':
+                    sortedData.sort((a, b) => a.height > b.height ? 1 : - 1)
+                        .map((item) => item);
+                    break;
+                case 'Height ↓':
+                    sortedData.sort((a, b) => a.height > b.height ? - 1 : 1)
+                        .map((item) => item);
+                    break;
+                case 'Likes ↑':
+                    sortedData.sort((a, b) => a.likes > b.likes ? 1 : - 1)
+                        .map((item) => item);
+                    break;
+                case 'Likes ↓':
+                    sortedData.sort((a, b) => a.likes > b.likes ? - 1 : 1)
+                        .map((item) => item);
+                    break;
+            }
 
-            setFilteredImages(updatedFilteredImages);
+            setSortedImages(sortedData);
         }
-    }, [updatedImages]);
+    }, [updatedImages, sortOption]);
+
+    useEffect(() => {
+    }, [sortedImages]);
 
 
 
@@ -41,15 +81,15 @@ function Home() {
 
 
         const imagesSearched = imagesUpdated;
-        setFilteredImages(imagesSearched);
+        setSortedImages(imagesSearched);
     }
 
     return (
         <>
-            <SearchBar handleSearch={handleSearch}>
+            <SearchBar handleSearch={handleSearch} sortOption={sortOption} setSortOption={setSortOption}>
             </SearchBar>
 
-            <Dashboard images={updatedImages} filteredImages={filteredImages}>
+            <Dashboard images={updatedImages} filteredImages={sortedImages}>
             </Dashboard>
         </>
     );
