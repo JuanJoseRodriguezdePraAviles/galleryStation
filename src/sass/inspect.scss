@@ -18,6 +18,9 @@
     }
 
     & .btn-container {
+        position: relative;
+        top: 1rem;
+        left: 1rem;
         background-color: #03BB85;
         color: white;
         outline: none;
@@ -53,9 +56,50 @@
         width: 100%;
         border:none;
         text-align: left;
+        resize: none;
         
 
     }
 
+}
 
+@media screen and (min-width: 1200px) {
+    .inspect-window {
+        left: 35%;
+
+        width: 30%;
+        & p,
+        & h2 {
+            
+        }
+    
+        & .static-data-container {
+            
+        }
+    
+        & .btn-container {
+            
+            left: 5rem;
+        }
+    
+        .exit {
+            right: 32.5rem;
+    
+            & .icon {
+                
+            }
+        }
+    
+        & .edit-description-container {
+            
+    
+            
+        }
+    
+        & .description-field {
+            
+    
+        }
+    
+    }
 }

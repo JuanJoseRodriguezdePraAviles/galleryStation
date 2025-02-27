@@ -28,8 +28,10 @@
 
 @media screen and (min-width: 1200px) {
     .imageContainer {
-        height: 100%;
-        margin: 0 4%;
-        box-sizing: border-box;
+        break-inside: avoid;
+        & .imageControls {
+            position: relative;
+            top: -0.3rem;
+        }
     }
 }

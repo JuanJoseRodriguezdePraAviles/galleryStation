@@ -28,8 +28,9 @@ function Dashboard(props) {
                         </>
                     ))
                 }
-
+                <button>Load More</button>
             </div>
+            
 
 
         </>

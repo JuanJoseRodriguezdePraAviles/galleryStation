@@ -19,14 +19,15 @@ function Favourite() {
 
     useEffect(() => {
         let data = [];
-            Object.entries(localStorage).map(([key, valueJSON]) => {
-                data = [...data, JSON.parse(valueJSON)];
+        console.log(localStorage.images);
+        if (localStorage.images) {
+            JSON.parse(localStorage.images).map((image) => {
+                data = [...data, JSON.parse(image)];
             });
             dispatch(setFavouritePhotos(data));
+        }
+
     }, [dispatch]);
-
-    
-
 
     const handleSearch = (event) => {
 
@@ -37,7 +38,6 @@ function Favourite() {
             dispatch(searchPhotos(inputNode.value));
         }
 
-
         const imagesSearched = images;
         /*const imagesSearched = images.filter((image) => {
             return image.slug.includes(inputNode.value.toLowerCase());
@@ -45,7 +45,7 @@ function Favourite() {
         setFilteredImages(imagesSearched);
     }
 
-    
+
     return (
         <>
             <SearchBar handleSearch={handleSearch}>

@@ -35,6 +35,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  if(!localStorage.getItem('images')){
+    let images = [];
+
+    localStorage.setItem('images', images);
+  }
   return (
     <>
       {<RouterProvider router={router} />}

@@ -28,12 +28,10 @@ function InspectWindow(props) {
     };
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem(props.image.id));
-        if(data!=null){
+        if(data){
             setDescription(data.description);
         }
-        
-
-    }, [])
+    }, []);
 
     const handleChange = (e) => {
         setDescription(e.target.value);
@@ -41,14 +39,15 @@ function InspectWindow(props) {
 
     const handleEdit = () => {
         if (!saved) {
-            localStorage.setItem(props.image.id,
-                JSON.stringify(
-                    {
-                        ...props.image,
-                        description: description
-                    }
-                ));
-
+            localStorage.getItem(images).push(JSON.stringify(
+                {
+                    ...props.image,
+                    description: description
+                }
+            ));
+        
+                
+            setDescription(description);
             setSaved(true);
         } else {
             setSaved(false);

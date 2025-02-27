@@ -9,18 +9,18 @@ function ImageContainer(props) {
     const [isInspectVisible, setIsInspectVisible] = useState(false);
 
     useEffect(() => {
-        {
-            Object.entries(localStorage).map(([key]) => {
-                if (key === props.id) {
+        console.log("Updating like state");
+        if (localStorage.images) {
+            JSON.parse(localStorage.images).map((image) => {
+                if (JSON.parse(image).id === props.id) {
                     setLike(true);
                 };
-
             })
-        };
-    }, [props.id]);
+        }
+    }, []);
 
     useEffect(() => {
-        if(isInspectVisible){
+        if (isInspectVisible) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
@@ -33,14 +33,28 @@ function ImageContainer(props) {
         setLike(newLikeState);
         if (newLikeState) {
             icon = "./src/assets/like.svg";
-            console.log("DATA TO SAVE");
-            console.log(props);
-            localStorage.setItem(props.id,
-                JSON.stringify(props)
-            );
+            console.log(localStorage.images);
+
+            let images = [];
+
+            if (localStorage.images) {
+                images = JSON.parse(localStorage.images);
+            }
+
+            console.log(images);
+            images.push(JSON.stringify(props));
+            localStorage.setItem('images', JSON.stringify(images));
         } else {
             icon = "./src/assets/dislike.svg";
-            localStorage.removeItem(props.id);
+            let images = JSON.parse(localStorage.images);
+            let index = 0;
+            images.map((image) => {
+                if (JSON.parse(image).id === props.id) {
+                    images.splice(index, 1);
+                }
+                index++;
+            });
+            localStorage.setItem('images', JSON.stringify(images));
         }
     }
 
@@ -50,6 +64,10 @@ function ImageContainer(props) {
 
     }
 
+    const handleDownload = async() => {
+        
+        window.location.href = `${props.image}&force=true`;
+    }
 
 
     let icon;
@@ -64,10 +82,10 @@ function ImageContainer(props) {
                 <img src={props.image} onClick={handleInspect} />
                 <div className="imageControls">
                     <img src={icon} onClick={handleSave} />
-                    <img src="./src/assets/download.svg" />
+                    <img src="./src/assets/download.svg" onClick={handleDownload} />
                 </div>
             </div>
-            <InspectWindow key={isInspectVisible?'-open':'close'} image={props} setIsInspectVisible= {setIsInspectVisible}  isInspectVisible={isInspectVisible}/>
+            <InspectWindow key={isInspectVisible ? '-open' : '-close'} image={props} setIsInspectVisible={setIsInspectVisible} isInspectVisible={isInspectVisible} />
         </>
     );
 }
