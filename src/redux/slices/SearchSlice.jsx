@@ -8,10 +8,6 @@ export const fetchPhotos = createAsyncThunk(
     async (page) => {
         const response = await fetch(`https://api.unsplash.com/photos?page=${page}&count=9&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg`);
         const data = await response.json();
-        console.log("data");
-        console.log(data);
-        console.log("page");
-        console.log(page);
         
         return {data, page };
     }
@@ -67,12 +63,16 @@ const searchSlice = createSlice(
             }
         },
         extraReducers: (builder) => {
-
+            
             builder.addCase(fetchPhotos.fulfilled, (state, action) => {
+                const newImages = action.payload.data;
                 if(action.payload.page === 1) {
                     state.images = action.payload.data;
                 } else {
-                    state.images = [...state.images, ...action.payload.data];
+                    const currentImagesIds = state.images.map(img => img.id);
+                    const uniqueNewImages = newImages.filter(img => !currentImagesIds.includes(img.id));
+                    
+                    state.images = [...state.images, ...uniqueNewImages];
                 }
             }).addCase(searchPhotos.fulfilled, (state, action) => {
                 state.images = action.payload;

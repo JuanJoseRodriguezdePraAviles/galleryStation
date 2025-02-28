@@ -26,8 +26,6 @@ function Home() {
 
 
     useEffect(() => {
-        console.log("updatedImages en useEffect:", updatedImages);
-        console.log("sortedImages en useEffect:", sortedImages);
         if (updatedImages && updatedImages.length > 0) {
             let sortedData = [...updatedImages];
             switch (sortOption) {
@@ -64,8 +62,6 @@ function Home() {
                         .map((item) => item);
                     break;
             }
-            console.log("sortedData");
-            console.log(sortedData);
             setSortedImages(sortedData);
         } else {
             setSortedImages([]);
@@ -73,8 +69,6 @@ function Home() {
     }, [updatedImages, sortOption]);
 
     useEffect(() => {
-        console.log("updatedImages en Home:", updatedImages);
-        console.log("sortedImages en Home:", sortedImages);
     }, [sortedImages]);
 
 

@@ -14,12 +14,38 @@
         align-content: center;
         position: relative;
         top: -0.225rem;
+        display: inline-block;
+        width: 100%;
 
         & img {
             cursor: pointer;
-            margin: 0 20%;
+            
             display: inline-block;
             width: 2rem;
+
+        }
+
+        & .likes-container {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            padding: 1rem 10%;
+
+            & img, p {
+                display: inline-block;
+            }
+
+            & p {
+                font-size: 2rem;
+                margin-left: 1rem;
+                position: relative;
+                top:-0.2rem
+            }
+        }
+        & .download-container {
+            display: inline-block;
+            width: 50%;
+            padding: 1rem 15%;
         }
     }
 

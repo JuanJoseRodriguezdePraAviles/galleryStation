@@ -4,7 +4,6 @@ import ImageContainer from './ImageContainer';
 
 
 function Dashboard(props) {
-    console.log(props.filteredImages);
     return (
         <>
             <div className='bg-blue'>

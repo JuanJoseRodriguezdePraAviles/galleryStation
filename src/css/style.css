@@ -150,12 +150,33 @@ header .liked {
   align-content: center;
   position: relative;
   top: -0.225rem;
+  display: inline-block;
+  width: 100%;
 }
 .imageContainer .imageControls img {
   cursor: pointer;
-  margin: 0 20%;
   display: inline-block;
   width: 2rem;
+}
+.imageContainer .imageControls .likes-container {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  padding: 1rem 10%;
+}
+.imageContainer .imageControls .likes-container img, .imageContainer .imageControls .likes-container p {
+  display: inline-block;
+}
+.imageContainer .imageControls .likes-container p {
+  font-size: 2rem;
+  margin-left: 1rem;
+  position: relative;
+  top: -0.2rem;
+}
+.imageContainer .imageControls .download-container {
+  display: inline-block;
+  width: 50%;
+  padding: 1rem 15%;
 }
 
 @media screen and (min-width: 1200px) {

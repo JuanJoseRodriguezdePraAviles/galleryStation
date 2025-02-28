@@ -61,25 +61,34 @@ function ImageContainer(props) {
 
     }
 
-    const handleDownload = async() => {
-        
+    const handleDownload = async () => {
+
         window.location.href = `${props.image}&force=true`;
     }
 
 
     let icon;
+    let numLikes;
     if (like) {
         icon = "./src/assets/like.svg";
+        numLikes = props.likes + 1;
     } else {
         icon = "./src/assets/dislike.svg";
+        numLikes = props.likes;
     }
     return (
         <>
             <div className="imageContainer">
                 <img src={props.image} onClick={handleInspect} />
                 <div className="imageControls">
-                    <img src={icon} onClick={handleSave} />
-                    <img src="./src/assets/download.svg" onClick={handleDownload} />
+                    <div className='likes-container'>
+                        <img src={icon} onClick={handleSave} />
+                        <p>{numLikes}</p>
+                    </div>
+                    <div className='download-container'>
+                        <img src="./src/assets/download.svg" onClick={handleDownload} />
+                    </div>
+                    
                 </div>
             </div>
             <InspectWindow key={isInspectVisible ? '-open' : '-close'} image={props} setIsInspectVisible={setIsInspectVisible} isInspectVisible={isInspectVisible} />

@@ -22,7 +22,6 @@ function Favourite() {
         let data = [];
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
-                console.log(image);
                 data = [...data, image];
             });
             dispatch(setFavouritePhotos(data));
@@ -52,7 +51,6 @@ function Favourite() {
             return;
         }
         const imagesSearched = images.filter((image) => {
-            console.log(image);
             if (image.description) {
                 return image.description.includes(filterValue.toLowerCase());
             }
