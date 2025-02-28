@@ -5,10 +5,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchPhotos = createAsyncThunk(
     'photos/fetchPhotos',
-    async () => {
-        const response = await fetch('https://api.unsplash.com/photos?count=9&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg');
+    async (page) => {
+        const response = await fetch(`https://api.unsplash.com/photos?page=${page}&count=9&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg`);
         const data = await response.json();
-        return data;
+        console.log("data");
+        console.log(data);
+        console.log("page");
+        console.log(page);
+        
+        return {data, page };
     }
 );
 
@@ -48,7 +53,8 @@ export const searchPhotos = createAsyncThunk(
 
 
 const initialState = {
-    images: []
+    data: [],
+    page: 1
 };
 
 const searchSlice = createSlice(
@@ -56,10 +62,18 @@ const searchSlice = createSlice(
         name: 'search',
         initialState,
         reducers: {
+            incrementPage: (state) => {
+                state.page += 1;
+            }
         },
         extraReducers: (builder) => {
+
             builder.addCase(fetchPhotos.fulfilled, (state, action) => {
-                state.images = action.payload;
+                if(action.payload.page === 1) {
+                    state.images = action.payload.data;
+                } else {
+                    state.images = [...state.images, ...action.payload.data];
+                }
             }).addCase(searchPhotos.fulfilled, (state, action) => {
                 state.images = action.payload;
             }).addCase(searchRandomPhotos.fulfilled, (state, action) => {
@@ -68,4 +82,5 @@ const searchSlice = createSlice(
         }
     });
 
+export const { incrementPage } = searchSlice.actions;   
 export default searchSlice.reducer;

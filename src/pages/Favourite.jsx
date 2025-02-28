@@ -15,13 +15,15 @@ function Favourite() {
 
     const [filteredImages, setFilteredImages] = useState(images);
     const updatedFilteredImages = useSelector((state) => state.images);
+    const [filterValue, setFilterValue] = useState("");
 
 
     useEffect(() => {
         let data = [];
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
-                data = [...data, JSON.parse(image)];
+                console.log(image);
+                data = [...data, image];
             });
             dispatch(setFavouritePhotos(data));
         }
@@ -38,19 +40,43 @@ function Favourite() {
         }
 
         const imagesSearched = images;
-        /*const imagesSearched = images.filter((image) => {
-            return image.slug.includes(inputNode.value.toLowerCase());
-        });*/
+
         setFilteredImages(imagesSearched);
     }
 
 
+
+    useEffect(() => {
+        if(!filterValue){
+            setFilteredImages(images);
+            return;
+        }
+        const imagesSearched = images.filter((image) => {
+            console.log(image);
+            if (image.description) {
+                return image.description.includes(filterValue.toLowerCase());
+            }
+            else {
+                return null;
+            }
+
+        });
+        setFilteredImages(imagesSearched);
+    }, [filterValue, images]);
+
+
+    useEffect(() => {
+        setFilteredImages(images);
+
+    }, [images]);
+
+
     return (
         <>
-            <SearchBar handleSearch={handleSearch}>
+            <SearchBar handleSearch={handleSearch} filterValue={filterValue} setFilterValue={setFilterValue}>
             </SearchBar>
             <h2 className='favouriteTitle'>My collection</h2>
-            <Dashboard images={images}>
+            <Dashboard images={filteredImages}>
             </Dashboard>
         </>
     );

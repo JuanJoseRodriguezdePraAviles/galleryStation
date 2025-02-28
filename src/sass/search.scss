@@ -7,7 +7,8 @@
     align-items: center;
 
     & .searchContainer,
-    & .filterContainer {
+    & .filterContainer,
+    & .filter {
         margin-left: 10%;
         display: inline-block;
     }
@@ -44,7 +45,9 @@
         }
     }
 
-    & .filterContainer {
+    
+
+    & .filterContainer, & .filter {
         cursor: pointer;
         margin-top: 1.2rem;
         height: 3.5rem;
@@ -98,6 +101,8 @@
         }
 
     }
+
+    
 
 
 

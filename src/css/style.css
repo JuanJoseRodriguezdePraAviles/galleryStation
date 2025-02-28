@@ -40,7 +40,7 @@ header .liked {
   align-content: center;
   align-items: center;
 }
-.searchFilterContainer .searchContainer, .searchFilterContainer .filterContainer {
+.searchFilterContainer .searchContainer, .searchFilterContainer .filterContainer, .searchFilterContainer .filter {
   margin-left: 10%;
   display: inline-block;
 }
@@ -69,7 +69,7 @@ header .liked {
   top: 0.75rem;
   height: 2rem;
 }
-.searchFilterContainer .filterContainer {
+.searchFilterContainer .filterContainer, .searchFilterContainer .filter {
   cursor: pointer;
   margin-top: 1.2rem;
   height: 3.5rem;
@@ -77,39 +77,39 @@ header .liked {
   text-align: left;
   opacity: 0.75;
 }
-.searchFilterContainer .filterContainer p {
+.searchFilterContainer .filterContainer p, .searchFilterContainer .filter p {
   display: inline-block;
   width: 80%;
   font-family: "Inter";
   margin-top: 1rem;
   margin-left: 5%;
 }
-.searchFilterContainer .filterContainer p .arrowUp {
+.searchFilterContainer .filterContainer p .arrowUp, .searchFilterContainer .filter p .arrowUp {
   background-image: url("./src/assets/ArrowUp.svg");
   background-size: cover;
 }
-.searchFilterContainer .filterContainer img {
+.searchFilterContainer .filterContainer img, .searchFilterContainer .filter img {
   display: inline-block;
 }
-.searchFilterContainer .filterContainer .option-selected {
+.searchFilterContainer .filterContainer .option-selected, .searchFilterContainer .filter .option-selected {
   background-color: white;
   opacity: 0.75;
   height: 3.5rem;
 }
-.searchFilterContainer .filterContainer .options {
+.searchFilterContainer .filterContainer .options, .searchFilterContainer .filter .options {
   background-color: white;
   position: absolute;
   z-index: 10;
   width: 80%;
   opacity: 1;
 }
-.searchFilterContainer .filterContainer .options .option-container {
+.searchFilterContainer .filterContainer .options .option-container, .searchFilterContainer .filter .options .option-container {
   background-color: white;
   opacity: 1;
   width: 80%;
   height: 3.5rem;
 }
-.searchFilterContainer .filterContainer .options .arrow-icon {
+.searchFilterContainer .filterContainer .options .arrow-icon, .searchFilterContainer .filter .options .arrow-icon {
   position: absolute;
   top: 1.25rem;
   right: 12%;
@@ -169,7 +169,7 @@ header .liked {
 }
 footer {
   position: absolute;
-  z-index: 10;
+  z-index: 15;
   width: 100%;
   padding: 1.25rem 1rem;
   background-color: #005227;
@@ -203,7 +203,27 @@ footer .socials-container p {
   display: inline-block;
   margin: 1rem 0 0 0.1rem;
 }
+footer .btn-load-more {
+  position: relative;
+  bottom: 10rem;
+  left: 0;
+  text-align: center;
+  margin: 0 40%;
+  z-index: 11;
+  background-color: #03BB85;
+  border: none;
+  padding: 0.5rem 0;
+  border-radius: 10%;
+  color: white;
+  width: 20%;
+}
 
+@media screen and (min-width: 1200px) {
+  footer .btn-load-more {
+    margin: 0 40%;
+    width: 10%;
+  }
+}
 .favouriteTitle {
   background-color: #A4FFF7;
   color: #038554;

@@ -1,18 +1,13 @@
 import './../css/style.css';
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 
 function SearchBar(props) {
     const [open, setOpen] = useState(false);
     const [optionSelected, setOptionSelected] = useState('Import Date');
 
-    const handleSelect = (optionText) => {
-        setOptionSelected(optionText);
-
-        setOpen(!open);
-
-
-    }
+    
     return (
         <>
             <div className="searchFilterContainer">
@@ -22,7 +17,7 @@ function SearchBar(props) {
                     <img src="./src/assets/searchIcon.svg" onClick={props.handleSearch} />
                 </div>
 
-                    
+                    {useLocation().pathname === '/'? 
                     <select className='filterContainer' onChange={(e) => {
                             props.setSortOption(e.target.value)
                         }}>
@@ -35,6 +30,10 @@ function SearchBar(props) {
                         <option value='Likes ↑'>Likes ↑</option>
                         <option value='Likes ↓'>Likes ↓</option>
                     </select>
+                    :
+                    <input type="text" className='filter' placeholder='Filter by description' onChange={(e)=> {
+                        props.setFilterValue(e.target.value);
+                    }}/>}
 
             </div>
         </>

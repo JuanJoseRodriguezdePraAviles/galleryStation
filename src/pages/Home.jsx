@@ -12,18 +12,22 @@ function Home() {
     const dispatch = useDispatch();
 
     const updatedImages = useSelector((state) => state.search.images);
-    const [sortedImages, setSortedImages] = useState(updatedImages);
+    const [sortedImages, setSortedImages] = useState([]);
     const updatedSortedImages = useSelector((state) => state.images);
+    const page = useSelector((state) => state.search.page);
 
     const [sortOption, setSortOption] = useState('Import Date ↑');
 
 
     useEffect(() => {
+        dispatch(fetchPhotos(page));
+    }, [dispatch, page]);
 
-        dispatch(fetchPhotos());
-    }, [dispatch]);
+
 
     useEffect(() => {
+        console.log("updatedImages en useEffect:", updatedImages);
+        console.log("sortedImages en useEffect:", sortedImages);
         if (updatedImages && updatedImages.length > 0) {
             let sortedData = [...updatedImages];
             switch (sortOption) {
@@ -60,12 +64,17 @@ function Home() {
                         .map((item) => item);
                     break;
             }
-
+            console.log("sortedData");
+            console.log(sortedData);
             setSortedImages(sortedData);
+        } else {
+            setSortedImages([]);
         }
     }, [updatedImages, sortOption]);
 
     useEffect(() => {
+        console.log("updatedImages en Home:", updatedImages);
+        console.log("sortedImages en Home:", sortedImages);
     }, [sortedImages]);
 
 
@@ -89,7 +98,7 @@ function Home() {
             <SearchBar handleSearch={handleSearch} sortOption={sortOption} setSortOption={setSortOption}>
             </SearchBar>
 
-            <Dashboard images={updatedImages} filteredImages={sortedImages}>
+            <Dashboard key={sortedImages.length} images={updatedImages} filteredImages={sortedImages}>
             </Dashboard>
         </>
     );

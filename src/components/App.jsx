@@ -3,8 +3,9 @@ import Favourite from '../pages/Favourite';
 import Header from './Header';
 import Footer from './Footer';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter, Route, Outlet } from 'react-router-dom';
+import { fetchPhotos } from '../redux/slices/SearchSlice';
 
 const Layout = () => {
   return (
@@ -36,10 +37,13 @@ const router = createBrowserRouter([
 
 function App() {
   if(!localStorage.getItem('images')){
-    let images = [];
-
-    localStorage.setItem('images', images);
+    let images = new Array();
+    
+    localStorage.setItem('images', '[]');
   }
+
+  
+
   return (
     <>
       {<RouterProvider router={router} />}

@@ -27,10 +27,20 @@ function InspectWindow(props) {
 
     };
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem(props.image.id));
-        if(data){
-            setDescription(data.description);
+        const data = JSON.parse(localStorage.images);
+        console.log(data);
+        if(data.length!==2){
+            data.map((image)=>{
+            
+                if(image.id==props.image.id){
+                    console.log('update description');
+                    console.log(image.description);
+                    setDescription(image.description);
+                }
+            });
         }
+        
+        
     }, []);
 
     const handleChange = (e) => {
@@ -39,14 +49,40 @@ function InspectWindow(props) {
 
     const handleEdit = () => {
         if (!saved) {
-            localStorage.getItem(images).push(JSON.stringify(
-                {
-                    ...props.image,
-                    description: description
-                }
-            ));
-        
+            console.log(localStorage.images);
+            
+            const updatedImages = JSON.parse(localStorage.images).map((image) => {
                 
+                console.log(image);
+                if (image.id === props.image.id) {
+                    let imageUpdate = props.image;
+                    console.log('updating localstorage');
+                    console.log(JSON.parse(localStorage.images));
+                    console.log(JSON.stringify(
+                        {
+                            ...props.image,
+                            description: description
+                    }));
+
+                    imageUpdate =
+                            {
+                                ...props.image,
+                                description: description
+                            }
+                        
+                    console.log(image);
+                    return imageUpdate;
+                };
+                return image;
+
+            });
+            console.log(updatedImages);
+            localStorage.setItem('images', JSON.stringify(updatedImages));
+
+
+
+
+
             setDescription(description);
             setSaved(true);
         } else {

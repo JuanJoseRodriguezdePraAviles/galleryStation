@@ -1,6 +1,6 @@
 footer {
     position: absolute;
-    z-index: 10;
+    z-index: 15;
     width: 100%;
     padding: 1.25rem 1rem;
     background-color: #005227;
@@ -45,4 +45,28 @@ footer {
         }
     }
 
+    & .btn-load-more {
+        position: relative;
+        bottom: 10rem;
+        left:0;
+        text-align: center;
+        margin: 0 40%;
+        z-index:11;
+        background-color: #03BB85;
+        border:none;
+        padding: 0.5rem 0;
+        border-radius: 10%;
+        color: white;
+        width: 20%;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    footer {
+        & .btn-load-more {
+            margin: 0 40%;
+            width: 10%;
+        }
+    }
 }

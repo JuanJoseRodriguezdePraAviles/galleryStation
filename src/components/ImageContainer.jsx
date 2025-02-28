@@ -11,7 +11,7 @@ function ImageContainer(props) {
     useEffect(() => {
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
-                if (JSON.parse(image).id === props.id) {
+                if (image.id === props.id) {
                     setLike(true);
                 };
             })
@@ -39,14 +39,14 @@ function ImageContainer(props) {
                 images = JSON.parse(localStorage.images);
             }
 
-            images.push(JSON.stringify(props));
+            images.push(props);
             localStorage.setItem('images', JSON.stringify(images));
         } else {
             icon = "./src/assets/dislike.svg";
             let images = JSON.parse(localStorage.images);
             let index = 0;
             images.map((image) => {
-                if (JSON.parse(image).id === props.id) {
+                if (image.id === props.id) {
                     images.splice(index, 1);
                 }
                 index++;

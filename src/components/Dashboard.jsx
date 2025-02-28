@@ -1,9 +1,10 @@
 import './../css/style.css';
 import ImageContainer from './ImageContainer';
-import { useLocation } from 'react-router-dom';
+
 
 
 function Dashboard(props) {
+    console.log(props.filteredImages);
     return (
         <>
             <div className='bg-blue'>
@@ -11,8 +12,9 @@ function Dashboard(props) {
                     props.filteredImages.map(image => (
 
                         <>
-                            <ImageContainer key={image.id} image={image.links?.download || image.image} width={image.width}
-                            height={image.height} likes={image.likes} date={image.date} description={image.alt_description} >
+                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image}
+                                width={image.width} height={image.height} likes={image.likes} date={image.links ? image.created_at : image.date}
+                                description={image.description}>
 
                             </ImageContainer>
                         </>
@@ -28,7 +30,7 @@ function Dashboard(props) {
                         </>
                     ))
                 }
-                <button>Load More</button>
+                
             </div>
             
 
