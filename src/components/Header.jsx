@@ -6,7 +6,9 @@ function Header(props) {
     return (
         <header>
             <div className='title'>
-                <p>Gallery Station</p>
+                <Link className="title-link" to="/">
+                    <p className='title-text'>Gallery Station</p>
+                </Link>
             </div>
             {useLocation().pathname === '/' ? (
                 <Link to="/favourite">

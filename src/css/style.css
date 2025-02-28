@@ -320,4 +320,9 @@ footer .btn-load-more {
   padding: 0;
 }
 
+.title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*# sourceMappingURL=style.css.map */

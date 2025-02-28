@@ -1,5 +1,6 @@
 import { incrementPage } from '../redux/slices/SearchSlice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Footer() {
 
@@ -13,7 +14,10 @@ function Footer() {
         <>
             <footer>
                 <div className="description-container">
-                    <h1>Gallery Station</h1>
+                    <Link to='/' className='title-link'>
+                        <h1>Gallery Station</h1>
+                    </Link>
+                    
                     <p>Our image bank allows the user to create custom collections of their favorite images</p>
                 </div>
                 <div className="socials-container">
