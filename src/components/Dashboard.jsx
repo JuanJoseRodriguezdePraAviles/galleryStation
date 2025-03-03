@@ -1,9 +1,16 @@
 import './../css/style.css';
 import ImageContainer from './ImageContainer';
+import { incrementPage } from '../redux/slices/SearchSlice';
+import { useDispatch } from 'react-redux';
 
 
 
 function Dashboard(props) {
+    const dispatch = useDispatch();
+
+    const handleLoadMore = () => {
+        dispatch(incrementPage());
+    }
     return (
         <>
             <div className='bg-blue'>
@@ -29,9 +36,12 @@ function Dashboard(props) {
                         </>
                     ))
                 }
-                
+
             </div>
-            
+            <div className='load-more-container'>
+                <button className='btn-load-more' onClick={handleLoadMore}>Load More</button>
+            </div>
+
 
 
         </>

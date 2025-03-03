@@ -3,9 +3,12 @@
     margin: 0 4.6%;
     padding: 1.5rem 0;
 
-    & img {
+    & .image {
         cursor: pointer;
         width: 100%;
+        position: relative;
+        z-index: 1;
+        margin-bottom: -0.25rem;
     }
 
     & .imageControls {
@@ -13,39 +16,58 @@
         height: 4.625rem;
         align-content: center;
         position: relative;
-        top: -0.225rem;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
         width: 100%;
 
         & img {
             cursor: pointer;
-            
+
             display: inline-block;
             width: 2rem;
 
         }
 
         & .likes-container {
-            display: inline-block;
+            display: flex;
             width: 50%;
             height: 100%;
-            padding: 1rem 10%;
+            padding: 0 10%;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
 
-            & img, p {
+            & img,
+            p {
                 display: inline-block;
             }
 
             & p {
                 font-size: 2rem;
                 margin-left: 1rem;
-                position: relative;
-                top:-0.2rem
+                line-height: 1;
             }
         }
+
+        & .likes-container:hover, .download-container:hover {
+            background-color: #03633e;
+        }
+
         & .download-container {
             display: inline-block;
             width: 50%;
-            padding: 1rem 15%;
+            height: 100%;
+            padding: 0rem 15%;
+            position: relative;
+            top: 0rem;
+
+            & img {
+                padding-top: 1.25rem;
+                margin-left: 1rem;
+            }
         }
     }
 
@@ -55,9 +77,10 @@
 @media screen and (min-width: 1200px) {
     .imageContainer {
         break-inside: avoid;
+
         & .imageControls {
             position: relative;
-            top: -0.3rem;
+            top: 0rem;
         }
     }
 }

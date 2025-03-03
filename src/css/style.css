@@ -130,9 +130,34 @@ header .liked {
   background-color: #A4FFF7;
 }
 
+.btn-load-more {
+  position: relative;
+  bottom: 10rem;
+  left: 0;
+  text-align: center;
+  margin: 0 40%;
+  z-index: 11;
+  background-color: #03BB85;
+  border: none;
+  padding: 0.5rem 0;
+  border-radius: 10%;
+  color: white;
+  width: 20%;
+}
+
 @media screen and (min-width: 1200px) {
   .bg-blue {
     column-count: 3;
+  }
+  .load-more-container {
+    background-color: #A4FFF7;
+  }
+  .load-more-container .btn-load-more {
+    margin: 0% 40%;
+    width: 10%;
+  }
+  .load-more-container .btn-load-more:hover {
+    background-color: #03b07c;
   }
 }
 .imageContainer {
@@ -140,17 +165,21 @@ header .liked {
   margin: 0 4.6%;
   padding: 1.5rem 0;
 }
-.imageContainer img {
+.imageContainer .image {
   cursor: pointer;
   width: 100%;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -0.25rem;
 }
 .imageContainer .imageControls {
   background-color: #038554;
   height: 4.625rem;
   align-content: center;
   position: relative;
-  top: -0.225rem;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 .imageContainer .imageControls img {
@@ -159,24 +188,38 @@ header .liked {
   width: 2rem;
 }
 .imageContainer .imageControls .likes-container {
-  display: inline-block;
+  display: flex;
   width: 50%;
   height: 100%;
-  padding: 1rem 10%;
+  padding: 0 10%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10%;
 }
-.imageContainer .imageControls .likes-container img, .imageContainer .imageControls .likes-container p {
+.imageContainer .imageControls .likes-container img,
+.imageContainer .imageControls .likes-container p {
   display: inline-block;
 }
 .imageContainer .imageControls .likes-container p {
   font-size: 2rem;
   margin-left: 1rem;
-  position: relative;
-  top: -0.2rem;
+  line-height: 1;
+}
+.imageContainer .imageControls .likes-container:hover, .imageContainer .imageControls .download-container:hover {
+  background-color: #03633e;
 }
 .imageContainer .imageControls .download-container {
   display: inline-block;
   width: 50%;
-  padding: 1rem 15%;
+  height: 100%;
+  padding: 0rem 15%;
+  position: relative;
+  top: 0rem;
+}
+.imageContainer .imageControls .download-container img {
+  padding-top: 1.25rem;
+  margin-left: 1rem;
 }
 
 @media screen and (min-width: 1200px) {
@@ -185,7 +228,7 @@ header .liked {
   }
   .imageContainer .imageControls {
     position: relative;
-    top: -0.3rem;
+    top: 0rem;
   }
 }
 footer {
@@ -224,27 +267,7 @@ footer .socials-container p {
   display: inline-block;
   margin: 1rem 0 0 0.1rem;
 }
-footer .btn-load-more {
-  position: relative;
-  bottom: 10rem;
-  left: 0;
-  text-align: center;
-  margin: 0 40%;
-  z-index: 11;
-  background-color: #03BB85;
-  border: none;
-  padding: 0.5rem 0;
-  border-radius: 10%;
-  color: white;
-  width: 20%;
-}
 
-@media screen and (min-width: 1200px) {
-  footer .btn-load-more {
-    margin: 0 40%;
-    width: 10%;
-  }
-}
 .favouriteTitle {
   background-color: #A4FFF7;
   color: #038554;

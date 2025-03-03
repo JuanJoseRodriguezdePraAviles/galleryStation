@@ -79,7 +79,7 @@ function ImageContainer(props) {
     return (
         <>
             <div className="imageContainer">
-                <img src={props.image} onClick={handleInspect} />
+                <img src={props.image} onClick={handleInspect} className='image' />
                 <div className="imageControls">
                     <div className='likes-container'>
                         <img src={icon} onClick={handleSave} />

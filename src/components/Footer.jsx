@@ -1,14 +1,10 @@
-import { incrementPage } from '../redux/slices/SearchSlice';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Footer() {
 
-    const dispatch = useDispatch();
+    
 
-    const handleLoadMore = () => {
-        dispatch(incrementPage());
-    }
+    
 
     return (
         <>
@@ -28,7 +24,6 @@ function Footer() {
                         <img src="./src/assets/Phone.svg"/> <p>+34 666 555 999</p>
                     </div>
                 </div>
-                <button className='btn-load-more' onClick={handleLoadMore}>Load More</button>
             </footer>
         </>
     );
