@@ -29,7 +29,7 @@ header .disliked {
   background-image: url("./src/assets/Heart.svg");
 }
 header .liked {
-  background-image: url("./src/assets/like.svg");
+  background-image: url("./src/assets/Like.svg");
 }
 
 .searchFilterContainer {
@@ -283,9 +283,9 @@ footer .btn-load-more {
   background-color: #FF0000;
   width: 1.5rem;
   height: 1.5rem;
-  position: fixed;
-  top: 6rem;
-  right: 3.5rem;
+  position: relative;
+  top: -17rem;
+  right: -20rem;
 }
 .inspect-window .exit .icon {
   color: white;
@@ -311,7 +311,8 @@ footer .btn-load-more {
     left: 5rem;
   }
   .inspect-window .exit {
-    right: 32.5rem;
+    top: -17rem;
+    right: -90%;
   }
 }
 * {

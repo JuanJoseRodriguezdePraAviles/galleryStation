@@ -35,9 +35,9 @@
         background-color: #FF0000;
         width: 1.5rem;
         height: 1.5rem;
-        position: fixed;
-        top: 6rem;
-        right: 3.5rem;
+        position: relative;
+        top: -17rem;
+        right: -20rem;
 
         & .icon {
             color: white;
@@ -47,59 +47,41 @@
     & .edit-description-container {
         background-color: #038554;
 
-        
+
     }
 
     & .description-field {
         background-color: #038554;
         height: 10rem;
         width: 100%;
-        border:none;
+        border: none;
         text-align: left;
         resize: none;
-        
+
 
     }
 
 }
+
+
 
 @media screen and (min-width: 1200px) {
     .inspect-window {
         left: 35%;
 
         width: 30%;
-        & p,
-        & h2 {
-            
-        }
-    
-        & .static-data-container {
-            
-        }
-    
+
         & .btn-container {
-            
+
             left: 5rem;
         }
-    
+
         .exit {
-            right: 32.5rem;
-    
-            & .icon {
-                
-            }
+            top: -17rem;
+            right: -90%;
+
         }
-    
-        & .edit-description-container {
-            
-    
-            
-        }
-    
-        & .description-field {
-            
-    
-        }
-    
+
+
     }
 }
