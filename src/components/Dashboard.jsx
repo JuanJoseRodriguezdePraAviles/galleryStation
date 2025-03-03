@@ -2,6 +2,7 @@ import './../css/style.css';
 import ImageContainer from './ImageContainer';
 import { incrementPage } from '../redux/slices/SearchSlice';
 import { useDispatch } from 'react-redux';
+import {useLocation } from 'react-router-dom';
 
 
 
@@ -38,9 +39,13 @@ function Dashboard(props) {
                 }
 
             </div>
+
+            {useLocation().pathname === '/' ? (
             <div className='load-more-container'>
                 <button className='btn-load-more' onClick={handleLoadMore}>Load More</button>
-            </div>
+            </div>)
+            :
+            (<></>)}
 
 
 

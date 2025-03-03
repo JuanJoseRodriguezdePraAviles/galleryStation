@@ -46,7 +46,7 @@ function Favourite() {
 
 
     useEffect(() => {
-        if(!filterValue){
+        if (!filterValue) {
             setFilteredImages(images);
             return;
         }
@@ -67,15 +67,20 @@ function Favourite() {
         setFilteredImages(images);
 
     }, [images]);
-
+    console.log(filteredImages);
 
     return (
         <>
             <SearchBar handleSearch={handleSearch} filterValue={filterValue} setFilterValue={setFilterValue}>
             </SearchBar>
             <h2 className='favouriteTitle'>My collection</h2>
-            <Dashboard images={filteredImages}>
-            </Dashboard>
+            
+            {!filteredImages ?
+                <p className='message'>You can add your favourites photos from home</p>
+                :
+                <Dashboard images={filteredImages}>
+                </Dashboard>
+            }
         </>
     );
 }
