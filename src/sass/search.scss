@@ -117,10 +117,14 @@
 
             & input {
                 width: 90%;
+                text-align: center;
+                font-family: 'Sora';
+                padding-right: 1%;
             }
         }
-        & .filterContainer {
-            text-align: center;
+        & .filter {
+            padding-left: 1rem;
+
         }
         
     }

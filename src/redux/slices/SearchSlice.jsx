@@ -69,10 +69,11 @@ const searchSlice = createSlice(
                 if(action.payload.page === 1) {
                     state.images = action.payload.data;
                 } else {
-                    const currentImagesIds = state.images.map(img => img.id);
-                    const uniqueNewImages = newImages.filter(img => !currentImagesIds.includes(img.id));
+                    const currentImagesIds = new Set(state.images.map(img => img.id));
+                    const uniqueNewImages = newImages.filter(img => !currentImagesIds.has(img.id));
                     
-                    state.images = [...state.images, ...uniqueNewImages];
+                    state.images.push(...uniqueNewImages);
+                    
                 }
             }).addCase(searchPhotos.fulfilled, (state, action) => {
                 state.images = action.payload;

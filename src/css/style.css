@@ -123,9 +123,12 @@ header .liked {
   }
   .searchFilterContainer .searchContainer input {
     width: 90%;
-  }
-  .searchFilterContainer .filterContainer {
     text-align: center;
+    font-family: "Sora";
+    padding-right: 1%;
+  }
+  .searchFilterContainer .filter {
+    padding-left: 1rem;
   }
 }
 .bg-blue {
@@ -137,7 +140,7 @@ header .liked {
   bottom: 10rem;
   left: 0;
   text-align: center;
-  margin: 0 40%;
+  margin: 0 35%;
   z-index: 16;
   background-color: #03BB85;
   border: none;
@@ -161,6 +164,8 @@ header .liked {
 @media screen and (min-width: 1200px) {
   .bg-blue {
     column-count: 3;
+    padding-left: 2rem;
+    padding-right: 9rem;
   }
   .load-more-container {
     background-color: #A4FFF7;
@@ -173,9 +178,9 @@ header .liked {
   }
 }
 .imageContainer {
-  width: 90%;
-  margin: 0 4.6%;
-  padding: 1.5rem 0;
+  width: 100%;
+  margin: 0 4rem;
+  padding: 0.5rem 0;
 }
 .imageContainer .image {
   cursor: pointer;
@@ -226,7 +231,7 @@ header .liked {
   display: inline-block;
   width: 50%;
   height: 100%;
-  padding: 0rem 15%;
+  padding: 0rem 20%;
   position: relative;
   top: 0rem;
 }
@@ -323,7 +328,7 @@ footer .socials-container p {
   top: 5rem;
   left: 2.5rem;
   background-color: #005227;
-  height: 20rem;
+  height: 22.5rem;
   width: 80%;
   padding: 1rem;
   z-index: 20;
@@ -353,7 +358,7 @@ footer .socials-container p {
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
-  top: -17rem;
+  top: -19rem;
   right: -90%;
 }
 .inspect-window .exit .icon {
@@ -382,7 +387,7 @@ footer .socials-container p {
   }
   .inspect-window .exit {
     top: -17rem;
-    right: -90%;
+    right: -95%;
   }
 }
 * {

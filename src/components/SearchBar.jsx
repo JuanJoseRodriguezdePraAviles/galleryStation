@@ -13,7 +13,7 @@ function SearchBar(props) {
             <div className="searchFilterContainer">
                 <div className="searchContainer">
 
-                    <input type="text"></input>
+                    <input type="text" placeholder='Search photos'></input>
                     <img src="./src/assets/searchIcon.svg" onClick={props.handleSearch} />
                 </div>
 
