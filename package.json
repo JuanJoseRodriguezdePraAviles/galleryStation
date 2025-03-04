@@ -2,7 +2,7 @@
   "name": "gallerystation",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://gitname.github.io/tract-gh-pages",
+  "homepage": "https://JuanJoseRodriguezdePraAviles.github.io/galleryStation",
   "type": "module",
   "scripts": {
     "dev": "vite",

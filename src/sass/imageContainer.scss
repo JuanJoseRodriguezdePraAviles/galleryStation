@@ -1,6 +1,6 @@
 .imageContainer {
-    width: 100%;
-    margin: 0 4rem;
+    width: 95%;
+    margin: 0 0.5rem;
     padding: 0.5rem 0;
 
     & .image {
@@ -31,6 +31,7 @@
         }
 
         & .likes-container {
+            transition: all 0.5s;
             display: flex;
             width: 50%;
             height: 100%;
@@ -55,9 +56,11 @@
 
         & .likes-container:hover, .download-container:hover {
             background-color: #03633e;
+            transition: all 0.5s;
         }
 
         & .download-container {
+            transition: all 0.5s;
             display: inline-block;
             width: 50%;
             height: 100%;
