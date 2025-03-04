@@ -67,7 +67,6 @@ function Favourite() {
         setFilteredImages(images);
 
     }, [images]);
-    console.log(filteredImages);
 
     return (
         <>
