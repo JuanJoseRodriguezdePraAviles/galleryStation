@@ -1,0 +1,20 @@
+@use 'header';
+@use 'search';
+@use 'dashboard';
+@use 'imageContainer';
+@use 'footer';
+@use 'favourite';
+@use 'inspect';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+

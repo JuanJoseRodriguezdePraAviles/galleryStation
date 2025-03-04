@@ -1,0 +1,90 @@
+.inspect-window {
+    position: fixed;
+    top: 5rem;
+    left: 2.5rem;
+    background-color: #005227;
+    height: 22.5rem;
+    width: 80%;
+    padding: 1rem;
+    z-index: 20;
+
+    & p,
+    & h2 {
+        color: white;
+        font-family: "Sora", serif;
+    }
+
+    & .static-data-container {
+        display: inline-block;
+        width: 50%;
+    }
+
+    & .btn-container {
+        position: relative;
+        top: 1rem;
+        left: 1rem;
+        background-color: #03BB85;
+        color: white;
+        outline: none;
+        border: none;
+        border-radius: 20%;
+        padding: 0.5rem;
+
+    }
+
+    .exit {
+        border-radius: 50%;
+        background-color: #FF0000;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        top: -19rem;
+        right: -90%;
+
+        & .icon {
+            color: white;
+        }
+    }
+
+    & .edit-description-container {
+        background-color: #038554;
+
+
+    }
+
+    & .description-field {
+        background-color: #038554;
+        height: 10rem;
+        width: 100%;
+        border: none;
+        text-align: left;
+        resize: none;
+        font-family: "Sora", serif;
+
+
+    }
+
+}
+
+
+
+@media screen and (min-width: 1200px) {
+    .inspect-window {
+        left: 35%;
+
+        width: 30%;
+
+        & .btn-container {
+
+            left: 5rem;
+        }
+
+        .exit {
+            top: -17rem;
+            right: -95%;
+
+        }
+
+
+    }
+}

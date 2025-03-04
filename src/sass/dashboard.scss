@@ -1,0 +1,51 @@
+.bg-blue {
+    background-color: #A4FFF7;
+}
+
+.btn-load-more {
+    position: relative;
+    bottom: 10rem;
+    left: 0;
+    text-align: center;
+    margin: 0 35%;
+    z-index: 16;
+    background-color: #03BB85;
+    border: none;
+    padding: 0.5rem 0;
+    border-radius: 10%;
+    color: white;
+    width: 25%;
+    height: 3rem;
+    font-family: 'Sora';
+    
+}
+.btn-load-more:hover {
+    background-color: #03b07c;
+    cursor: pointer;
+}
+.load-more-container{
+    background-color: #A4FFF7;
+}
+
+@media screen and (min-width: 1200px) {
+    .bg-blue {
+        column-count: 3;
+        padding-left: 2rem;
+        padding-right: 9rem;
+    }
+
+    .load-more-container {
+        background-color: #A4FFF7;
+        & .btn-load-more {
+            margin: 0% 45%;
+            width: 10%;
+            height: 4rem;
+            font-size: 1.5rem;
+            
+        }
+
+        
+    }
+
+
+}
