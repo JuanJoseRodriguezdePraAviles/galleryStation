@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 import React, { useEffect, useState } from 'react';
-import { RouterProvider, createBrowserRouter, Route, Outlet } from 'react-router-dom';
+import { RouterProvider, createHashRouter, Route, Outlet } from 'react-router-dom';
 import { fetchPhotos } from '../redux/slices/SearchSlice';
 
 const Layout = () => {
@@ -17,17 +17,19 @@ const Layout = () => {
   );
 }
 
-const router = createBrowserRouter([
+const basename = import.meta.env.MODE === 'development' ? '/' : '/galleryStation/';
+
+const router = createHashRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <Home />
       },
       {
-        path: '/favourite',
+        path: 'favourite',
         element: <Favourite />
       }
     ],

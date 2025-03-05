@@ -19,10 +19,10 @@ function Footer() {
                     </div>
                     <div className="socials-container">
                         <div>
-                            <img src="./src/assets/Mail.svg" /> <p>example@gmail.com</p>
+                            <img src="/assets/Mail.svg" /> <p>example@gmail.com</p>
                         </div>
                         <div>
-                            <img src="./src/assets/Phone.svg" /> <p>+34 666 555 999</p>
+                            <img src="/assets/Phone.svg" /> <p>+34 666 555 999</p>
                         </div>
                     </div>
                 </footer>) : (<footer>
@@ -35,10 +35,10 @@ function Footer() {
                     </div>
                     <div className="socials-container">
                         <div>
-                            <img src="./src/assets/Mail.svg" /> <p>example@gmail.com</p>
+                            <img src="/assets/Mail.svg" /> <p>example@gmail.com</p>
                         </div>
                         <div>
-                            <img src="./src/assets/Phone.svg" /> <p>+34 666 555 999</p>
+                            <img src="/assets/Phone.svg" /> <p>+34 666 555 999</p>
                         </div>
                     </div>
                 </footer>)}

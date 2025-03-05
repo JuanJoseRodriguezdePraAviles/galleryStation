@@ -27,10 +27,10 @@ header .heart {
   background-size: cover;
 }
 header .disliked {
-  background-image: url("./src/assets/Heart.svg");
+  background-image: url("/assets/Heart.svg");
 }
 header .liked {
-  background-image: url("./src/assets/Like.svg");
+  background-image: url("/assets/Like.svg");
 }
 
 .searchFilterContainer {
@@ -87,7 +87,7 @@ header .liked {
   margin-left: 5%;
 }
 .searchFilterContainer .filterContainer p .arrowUp, .searchFilterContainer .filter p .arrowUp {
-  background-image: url("./src/assets/ArrowUp.svg");
+  background-image: url("/assets/ArrowUp.svg");
   background-size: cover;
 }
 .searchFilterContainer .filterContainer img, .searchFilterContainer .filter img {
