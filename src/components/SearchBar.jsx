@@ -14,7 +14,7 @@ function SearchBar(props) {
                 <div className="searchContainer">
 
                     <input type="text" placeholder='Search photos'></input>
-                    <img src="/assets/searchIcon.svg" onClick={props.handleSearch} />
+                    <img src="./assets/searchIcon.svg" onClick={props.handleSearch} />
                 </div>
 
                     {useLocation().pathname === '/'? 

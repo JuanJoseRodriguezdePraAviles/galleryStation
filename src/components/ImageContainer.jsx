@@ -31,7 +31,7 @@ function ImageContainer(props) {
         const newLikeState = !like;
         setLike(newLikeState);
         if (newLikeState) {
-            icon = "/assets/like.svg";
+            icon = "./assets/Like.svg";
 
             let images = [];
 
@@ -42,7 +42,7 @@ function ImageContainer(props) {
             images.push(props);
             localStorage.setItem('images', JSON.stringify(images));
         } else {
-            icon = "/assets/dislike.svg";
+            icon = "./assets/dislike.svg";
             let images = JSON.parse(localStorage.images);
             let index = 0;
             images.map((image) => {
@@ -70,10 +70,10 @@ function ImageContainer(props) {
     let icon;
     let numLikes;
     if (like) {
-        icon = "/assets/like.svg";
+        icon = "./assets/Like.svg";
         numLikes = props.likes + 1;
     } else {
-        icon = "/assets/dislike.svg";
+        icon = "./assets/dislike.svg";
         numLikes = props.likes;
     }
     return (
@@ -86,7 +86,7 @@ function ImageContainer(props) {
                         <p>{numLikes}</p>
                     </div>
                     <div className='download-container'>
-                        <img src="/assets/download.svg" onClick={handleDownload} />
+                        <img src="./assets/download.svg" onClick={handleDownload} />
                     </div>
                     
                 </div>
