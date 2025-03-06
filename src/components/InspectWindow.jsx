@@ -13,12 +13,13 @@ function InspectWindow(props) {
     const [saved, setSaved] = useState(true);
 
 
+
     const descriptionFieldRef = useRef();
 
 
     const closeInspect = () => {
         props.setIsInspectVisible(false);
-
+        props.setInspectingImage(false);
 
 
         descriptionFieldRef.current.readOnly = true;
@@ -28,16 +29,16 @@ function InspectWindow(props) {
     };
     useEffect(() => {
         const data = JSON.parse(localStorage.images);
-        if(data.length!==2){
-            data.map((image)=>{
-            
-                if(image.id==props.image.id){
+        if (data.length !== 2) {
+            data.map((image) => {
+
+                if (image.id == props.image.id) {
                     setDescription(image.description);
                 }
             });
         }
-        
-        
+
+
     }, []);
 
     const handleChange = (e) => {
@@ -46,18 +47,18 @@ function InspectWindow(props) {
 
     const handleEdit = () => {
         if (!saved) {
-            
+
             const updatedImages = JSON.parse(localStorage.images).map((image) => {
-                
+
                 if (image.id === props.image.id) {
                     let imageUpdate = props.image;
 
                     imageUpdate =
-                            {
-                                ...props.image,
-                                description: description
-                            }
-                        
+                    {
+                        ...props.image,
+                        description: description
+                    }
+
                     return imageUpdate;
                 };
                 return image;
@@ -87,8 +88,9 @@ function InspectWindow(props) {
     }, [saved]);
 
 
+    if (!props.isInspectVisible && !props.inspectingImage) {
 
-    if (!props.isInspectVisible) {
+
         return null;
     }
 

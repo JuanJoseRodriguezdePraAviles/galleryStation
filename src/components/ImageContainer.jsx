@@ -6,7 +6,8 @@ import { useDispatch } from 'react-redux';
 function ImageContainer(props) {
     const [like, setLike] = useState(false);
     const dispatch = useDispatch();
-    const [isInspectVisible, setIsInspectVisible] = useState(false);
+    const [inspectingImage, setInspectingImage] = useState(false);
+    
 
     useEffect(() => {
         if (localStorage.images) {
@@ -19,12 +20,12 @@ function ImageContainer(props) {
     }, []);
 
     useEffect(() => {
-        if (isInspectVisible) {
+        if (props.isInspectVisible) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
         }
-    }, [isInspectVisible])
+    }, [props.isInspectVisible])
 
 
     const handleSave = () => {
@@ -55,9 +56,12 @@ function ImageContainer(props) {
         }
     }
 
-    const handleInspect = () => {
-
-        setIsInspectVisible(true);
+    const handleInspect = (e) => {
+        if(!props.isInspectVisible && props.image === e.target.src){
+            
+            setInspectingImage(true);
+        }
+        
 
     }
 
@@ -91,7 +95,7 @@ function ImageContainer(props) {
                     
                 </div>
             </div>
-            <InspectWindow key={isInspectVisible ? '-open' : '-close'} image={props} setIsInspectVisible={setIsInspectVisible} isInspectVisible={isInspectVisible} />
+            <InspectWindow key={props.isInspectVisible ? '-open' : '-close'} image={props} setIsInspectVisible={props.setIsInspectVisible} isInspectVisible={props.isInspectVisible} inspectingImage={inspectingImage} setInspectingImage={setInspectingImage} />
         </>
     );
 }
