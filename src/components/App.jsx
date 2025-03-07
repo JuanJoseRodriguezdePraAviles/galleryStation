@@ -3,9 +3,8 @@ import Favourite from '../pages/Favourite';
 import Header from './Header';
 import Footer from './Footer';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { RouterProvider, createHashRouter, Route, Outlet } from 'react-router-dom';
-import { fetchPhotos } from '../redux/slices/SearchSlice';
 
 const Layout = () => {
   return (
@@ -16,8 +15,6 @@ const Layout = () => {
     </>
   );
 }
-
-const basename = import.meta.env.MODE === 'development' ? '/' : '/galleryStation/';
 
 const router = createHashRouter([
   {
@@ -39,17 +36,12 @@ const router = createHashRouter([
 
 function App() {
   if(!localStorage.getItem('images')){
-    let images = new Array();
-    
     localStorage.setItem('images', '[]');
   }
-
-  
 
   return (
     <>
       {<RouterProvider router={router} />}
-
     </>
   )
 }

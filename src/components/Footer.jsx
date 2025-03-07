@@ -1,11 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
 function Footer() {
-
-
-
-
-
     return (
         <>
             {useLocation().pathname === '/' ? (
@@ -14,7 +9,6 @@ function Footer() {
                         <Link to='/' className='title-link'>
                             <h1>Gallery Station</h1>
                         </Link>
-
                         <p>Our image bank allows the user to create custom collections of their favorite images</p>
                     </div>
                     <div className="socials-container">
@@ -41,10 +35,9 @@ function Footer() {
                             <img src="./assets/Phone.svg" /> <p>+34 666 555 999</p>
                         </div>
                     </div>
-                </footer>)}
-
+                </footer>)
+            }
         </>
     );
 }
-
 export default Footer;

@@ -1,14 +1,8 @@
 import './../css/style.css';
 import React, { useState, useEffect } from 'react';
-import InspectWindow from './InspectWindow';
-import { useDispatch } from 'react-redux';
 
 function ImageContainer(props) {
     const [like, setLike] = useState(false);
-    const dispatch = useDispatch();
-    const [inspectingImage, setInspectingImage] = useState(false);
-    
-
     useEffect(() => {
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
@@ -27,13 +21,12 @@ function ImageContainer(props) {
         }
     }, [props.isInspectVisible])
 
-
     const handleSave = () => {
         const newLikeState = !like;
         setLike(newLikeState);
+        
         if (newLikeState) {
             icon = "./assets/Like.svg";
-
             let images = [];
 
             if (localStorage.images) {
@@ -42,7 +35,9 @@ function ImageContainer(props) {
 
             images.push(props);
             localStorage.setItem('images', JSON.stringify(images));
+        
         } else {
+
             icon = "./assets/dislike.svg";
             let images = JSON.parse(localStorage.images);
             let index = 0;
@@ -52,27 +47,23 @@ function ImageContainer(props) {
                 }
                 index++;
             });
+
             localStorage.setItem('images', JSON.stringify(images));
         }
     }
 
     const handleInspect = (e) => {
         if(!props.isInspectVisible && props.image === e.target.src){
-            
-            setInspectingImage(true);
+            props.setImageClickedID(props.id);
+            props.setIsInspectVisible(true);
         }
-        
-
     }
 
     const handleDownload = async () => {
-
         window.location.href = `${props.image}&force=true`;
     }
 
-
-    let icon;
-    let numLikes;
+    let icon, numLikes;
     if (like) {
         icon = "./assets/Like.svg";
         numLikes = props.likes + 1;
@@ -95,7 +86,7 @@ function ImageContainer(props) {
                     
                 </div>
             </div>
-            <InspectWindow key={props.isInspectVisible ? '-open' : '-close'} image={props} setIsInspectVisible={props.setIsInspectVisible} isInspectVisible={props.isInspectVisible} inspectingImage={inspectingImage} setInspectingImage={setInspectingImage} />
+            
         </>
     );
 }

@@ -1,18 +1,12 @@
 import './../css/style.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-
-function SearchBar(props) {
-    const [open, setOpen] = useState(false);
-    const [optionSelected, setOptionSelected] = useState('Import Date');
-
-    
+function SearchBar(props) {  
     return (
         <>
             <div className="searchFilterContainer">
                 <div className="searchContainer">
-
                     <input type="text" placeholder='Search photos'></input>
                     <img src="./assets/searchIcon.svg" onClick={props.handleSearch} />
                 </div>
@@ -33,11 +27,10 @@ function SearchBar(props) {
                     :
                     <input type="text" className='filter' placeholder='Filter by description' onChange={(e)=> {
                         props.setFilterValue(e.target.value);
-                    }}/>}
-
+                    }}/>
+                }
             </div>
         </>
     );
 }
-
 export default SearchBar;

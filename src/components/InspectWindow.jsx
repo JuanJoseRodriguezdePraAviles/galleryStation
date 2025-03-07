@@ -8,37 +8,30 @@ function formatDate(string) {
 }
 
 function InspectWindow(props) {
-
-    const [description, setDescription] = useState(props.image.description);
+    const [description, setDescription] = useState(props.images.description);
     const [saved, setSaved] = useState(true);
-
-
-
     const descriptionFieldRef = useRef();
-
 
     const closeInspect = () => {
         props.setIsInspectVisible(false);
-        props.setInspectingImage(false);
-
-
+        
+        if(!saved){
+            props.setImageClickedID("");
+        }
         descriptionFieldRef.current.readOnly = true;
         setSaved(true);
-
-
     };
+
     useEffect(() => {
         const data = JSON.parse(localStorage.images);
+        
         if (data.length !== 2) {
             data.map((image) => {
-
-                if (image.id == props.image.id) {
+                if (image.id == props.images.id) {
                     setDescription(image.description);
                 }
             });
         }
-
-
     }, []);
 
     const handleChange = (e) => {
@@ -47,66 +40,66 @@ function InspectWindow(props) {
 
     const handleEdit = () => {
         if (!saved) {
-
             const updatedImages = JSON.parse(localStorage.images).map((image) => {
-
-                if (image.id === props.image.id) {
-                    let imageUpdate = props.image;
-
-                    imageUpdate =
-                    {
-                        ...props.image,
-                        description: description
-                    }
-
+                if (image.id === props.imageClickedID) {
+                    let imageUpdate = image;
+                    imageUpdate = { ...imageUpdate, description: description }
                     return imageUpdate;
                 };
                 return image;
 
             });
+            
             localStorage.setItem('images', JSON.stringify(updatedImages));
-
-
-
-
 
             setDescription(description);
             setSaved(true);
         } else {
             setSaved(false);
         }
-
     }
 
     useEffect(() => {
         if (descriptionFieldRef.current) {
             descriptionFieldRef.current.readOnly = saved;
-
         }
-
 
     }, [saved]);
 
+    useEffect(() => {
+        props.images.map((image) => {
+            if (image.id === props.imageClickedID) {
+                console.log("load", image);
+                props.setInspectData({
+                    width: image.width,
+                    height: image.height,
+                    likes: image.likes,
+                    date: image.updated_at,
+                    description: image.description ? image.description : image.alt_description
+                });
+            }
+        });
 
-    if (!props.isInspectVisible && !props.inspectingImage) {
+    }, [props.imageClickedID]);
 
+    useEffect(() => {
+        setDescription(props.inspectData.description);
+    }, [props.inspectData]);
 
+    if (!props.isInspectVisible) {
         return null;
     }
 
     return (
         <>
-            <div id={props.image.id} className="inspect-window">
-
+            <div id={props.images.id} className="inspect-window">
                 <div className='static-data-container'>
-                    <p>Width:{props.image.width}</p>
-                    <p>Height:{props.image.height}</p>
-                    <p>Likes:{props.image.likes}</p>
-                    <p>Create at:{formatDate(props.image.date)}</p>
+                    <p>Width:{props.inspectData.width}</p>
+                    <p>Height:{props.inspectData.height}</p>
+                    <p>Likes:{props.inspectData.likes}</p>
+                    <p>Create at:{formatDate(props.inspectData.date)}</p>
                 </div>
                 {useLocation().pathname !== '/' ? <button className='btn-container' onClick={handleEdit}>{saved ? 'Edit description' : 'Save'}</button> : <></>}
-
-
 
                 <div className='description-container'>
                     <h2>Description</h2>
