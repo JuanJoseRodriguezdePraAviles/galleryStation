@@ -6,7 +6,7 @@ function ImageContainer(props) {
     useEffect(() => {
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
-                if (image.id === props.id) {
+                if (image.id === props.image.id) {
                     setLike(true);
                 };
             })
@@ -33,7 +33,7 @@ function ImageContainer(props) {
                 images = JSON.parse(localStorage.images);
             }
 
-            images.push(props);
+            images.push(props.image);
             localStorage.setItem('images', JSON.stringify(images));
         
         } else {
@@ -42,7 +42,7 @@ function ImageContainer(props) {
             let images = JSON.parse(localStorage.images);
             let index = 0;
             images.map((image) => {
-                if (image.id === props.id) {
+                if (image.id === props.image.id) {
                     images.splice(index, 1);
                 }
                 index++;
@@ -53,8 +53,9 @@ function ImageContainer(props) {
     }
 
     const handleInspect = (e) => {
-        if(!props.isInspectVisible && props.image === e.target.src){
-            props.setImageClickedID(props.id);
+        console.log(props.image)
+        if(!props.isInspectVisible && props.image.links? props.image.links.download : props.image  === e.target.src){
+            props.setImageClickedID(props.image.id);
             props.setIsInspectVisible(true);
         }
     }
@@ -64,17 +65,18 @@ function ImageContainer(props) {
     }
 
     let icon, numLikes;
+    console.log(props);
     if (like) {
         icon = "./assets/Like.svg";
-        numLikes = props.likes + 1;
+        numLikes = props.image.likes + 1;
     } else {
         icon = "./assets/dislike.svg";
-        numLikes = props.likes;
+        numLikes = props.image.likes;
     }
     return (
         <>
             <div className="imageContainer">
-                <img src={props.image} onClick={handleInspect} className='image' />
+                <img src={props.image.links? props.image.links.download : props.image} onClick={handleInspect} className='image' />
                 <div className="imageControls">
                     <div className='likes-container' onClick={handleSave}>
                         <img src={icon} />

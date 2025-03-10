@@ -1,15 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-
-
-
 export const fetchPhotos = createAsyncThunk(
     'photos/fetchPhotos',
     async (page) => {
         const response = await fetch(`https://api.unsplash.com/photos?page=${page}&count=9&client_id=xaxF1z4wfbKSSMAbo4Qv0klSKZA58aY2wrARcNnuIBg`);
         const data = await response.json();
         
-        return {data, page };
+        return {data, page};
     }
 );
 
@@ -45,8 +42,6 @@ export const searchPhotos = createAsyncThunk(
         return imagesCollected;
     }
 );
-
-
 
 const initialState = {
     data: [],

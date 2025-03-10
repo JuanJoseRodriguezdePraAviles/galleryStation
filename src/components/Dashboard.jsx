@@ -21,16 +21,14 @@ function Dashboard(props) {
     const handleLoadMore = () => {
         dispatch(incrementPage());
     }
-
+    console.log(props.images);
     return (
         <>
             <div className='bg-blue'>
                 {props.filteredImages ?
                     props.filteredImages.map(image => (
                         <>
-                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image}
-                                width={image.width} height={image.height} likes={image.likes} date={image.links ? image.created_at : image.date}
-                                description={image.description? image.description : image.alt_description} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                            <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
                                 setInspectData={setInspectData} setImageClickedID={setImageClickedID}>
                             </ImageContainer>
                         </>
@@ -38,9 +36,7 @@ function Dashboard(props) {
                     :
                     props.images.map(image => (
                         <>
-                            <ImageContainer key={image.id} id={image.id} image={image.links?.download || image.image}
-                                width={image.width} height={image.height} likes={image.likes} date={image.links ? image.created_at : image.date}
-                                description={image.description? image.description : image.alt_description} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                            <ImageContainer key={image.id} image={image} isInspectVisible={image.isInspectVisible} setIsInspectVisible={setIsInspectVisible}
                                 setInspectData={inspectData} setImageClickedID={setImageClickedID}>
                             </ImageContainer>
                         </>

@@ -11,13 +11,13 @@ function Favourite() {
     const images = useSelector((state) => state.favourite.images);
     const [filteredImages, setFilteredImages] = useState(images);
     const [filterValue, setFilterValue] = useState("");
-
     useEffect(() => {
         let data = [];
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
                 data = [...data, image];
             });
+            
             dispatch(setFavouritePhotos(data));
         }
     }, [dispatch]);
@@ -51,7 +51,7 @@ function Favourite() {
     useEffect(() => {
         setFilteredImages(images);
     }, [images]);
-
+    console.log(images);
     return (
         <>
             <SearchBar handleSearch={handleSearch} filterValue={filterValue} setFilterValue={setFilterValue}>

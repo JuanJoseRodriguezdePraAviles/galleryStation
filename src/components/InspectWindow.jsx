@@ -67,9 +67,11 @@ function InspectWindow(props) {
     }, [saved]);
 
     useEffect(() => {
+        console.log("about to load data", props.images);
         props.images.map((image) => {
+            console.log("load", image);
             if (image.id === props.imageClickedID) {
-                console.log("load", image);
+                
                 props.setInspectData({
                     width: image.width,
                     height: image.height,
@@ -89,7 +91,6 @@ function InspectWindow(props) {
     if (!props.isInspectVisible) {
         return null;
     }
-
     return (
         <>
             <div id={props.images.id} className="inspect-window">
