@@ -17,41 +17,36 @@ function Dashboard(props) {
         description: ""
     });
     const [imageClickedID, setImageClickedID] = useState("");
-    
+
     const handleLoadMore = () => {
         dispatch(incrementPage());
     }
-    console.log(props.images);
+
     return (
-        <>
+        <div>
             <div className='bg-blue'>
                 {props.filteredImages ?
                     props.filteredImages.map(image => (
-                        <>
-                            <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
-                                setInspectData={setInspectData} setImageClickedID={setImageClickedID}>
-                            </ImageContainer>
-                        </>
+                        <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                            setInspectData={setInspectData} setImageClickedID={setImageClickedID}>
+                        </ImageContainer>
                     ))
                     :
                     props.images.map(image => (
-                        <>
-                            <ImageContainer key={image.id} image={image} isInspectVisible={image.isInspectVisible} setIsInspectVisible={setIsInspectVisible}
-                                setInspectData={inspectData} setImageClickedID={setImageClickedID}>
-                            </ImageContainer>
-                        </>
+                        <ImageContainer key={image.id} image={image} isInspectVisible={image.isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                            setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                        </ImageContainer>
                     ))
                 }
             </div>
-            {useLocation().pathname === '/' && 
+            {useLocation().pathname === '/' &&
                 <div className='load-more-container'>
                     <button className='btn-load-more' onClick={handleLoadMore}>Load More</button>
                 </div>
             }
-            <InspectWindow key={props.isInspectVisible ? '-open' : '-close'} images={props.filteredImages? props.filteredImages : props.images} setIsInspectVisible={setIsInspectVisible} isInspectVisible={isInspectVisible} inspectData={inspectData}
-                            setInspectData={setInspectData}  setImageClickedID={setImageClickedID} imageClickedID={imageClickedID} />
-         
-        </>
+            <InspectWindow key={props.isInspectVisible ? '-open' : '-close'} images={props.filteredImages ? props.filteredImages : props.images} setIsInspectVisible={setIsInspectVisible} isInspectVisible={isInspectVisible} inspectData={inspectData}
+                setInspectData={setInspectData} setImageClickedID={setImageClickedID} imageClickedID={imageClickedID} />
+        </div>
     );
 }
 export default Dashboard;

@@ -51,7 +51,7 @@ function Favourite() {
     useEffect(() => {
         setFilteredImages(images);
     }, [images]);
-    console.log(images);
+    
     return (
         <>
             <SearchBar handleSearch={handleSearch} filterValue={filterValue} setFilterValue={setFilterValue}>

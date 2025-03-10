@@ -53,7 +53,6 @@ function ImageContainer(props) {
     }
 
     const handleInspect = (e) => {
-        console.log(props.image)
         if(!props.isInspectVisible && props.image.links? props.image.links.download : props.image  === e.target.src){
             props.setImageClickedID(props.image.id);
             props.setIsInspectVisible(true);
@@ -65,7 +64,6 @@ function ImageContainer(props) {
     }
 
     let icon, numLikes;
-    console.log(props);
     if (like) {
         icon = "./assets/Like.svg";
         numLikes = props.image.likes + 1;
@@ -73,7 +71,7 @@ function ImageContainer(props) {
         icon = "./assets/dislike.svg";
         numLikes = props.image.likes;
     }
-    console.log(props.image);
+    
     return (
         <>
             <div className="imageContainer">

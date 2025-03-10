@@ -31,7 +31,6 @@ const router = createHashRouter([
       }
     ],
   }
-
 ]);
 
 function App() {

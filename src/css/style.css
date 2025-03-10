@@ -133,6 +133,7 @@ header .liked {
 }
 .bg-blue {
   background-color: #A4FFF7;
+  padding-top: 1rem;
 }
 
 .load-more-container {
