@@ -73,10 +73,11 @@ function ImageContainer(props) {
         icon = "./assets/dislike.svg";
         numLikes = props.image.likes;
     }
+    console.log(props.image);
     return (
         <>
             <div className="imageContainer">
-                <img src={props.image.links? props.image.links.download : props.image} onClick={handleInspect} className='image' />
+                <img src={props.image.links.download} onClick={handleInspect} className='image' />
                 <div className="imageControls">
                     <div className='likes-container' onClick={handleSave}>
                         <img src={icon} />

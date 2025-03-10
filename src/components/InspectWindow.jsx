@@ -11,6 +11,7 @@ function InspectWindow(props) {
     const [description, setDescription] = useState(props.images.description);
     const [saved, setSaved] = useState(true);
     const descriptionFieldRef = useRef();
+    const location = useLocation();
 
     const closeInspect = () => {
         props.setIsInspectVisible(false);
@@ -67,11 +68,24 @@ function InspectWindow(props) {
     }, [saved]);
 
     useEffect(() => {
-        console.log("about to load data", props.images);
-        props.images.map((image) => {
-            console.log("load", image);
+        if(location.pathname === '/'){
+            props.images.map((image) => {
+                if (image.id === props.imageClickedID) {
+                    
+                    props.setInspectData({
+                        width: image.width,
+                        height: image.height,
+                        likes: image.likes,
+                        date: image.updated_at,
+                        description: image.description ? image.description : image.alt_description
+                    });
+                }
+            });
+        } else {
+            let images = JSON.parse(localStorage.images);
+            images.map((image) => {
             if (image.id === props.imageClickedID) {
-                
+                    
                 props.setInspectData({
                     width: image.width,
                     height: image.height,
@@ -79,8 +93,9 @@ function InspectWindow(props) {
                     date: image.updated_at,
                     description: image.description ? image.description : image.alt_description
                 });
-            }
-        });
+            }})
+        }
+        
 
     }, [props.imageClickedID]);
 
