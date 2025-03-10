@@ -19,7 +19,13 @@ function Dashboard(props) {
     const [imageClickedID, setImageClickedID] = useState("");
 
     const handleLoadMore = () => {
+        const scrollY = window.scrollY;
+
         dispatch(incrementPage());
+
+        setTimeout(() => {
+            window.scrollTo({ top: scrollY, behavior: 'instant'});
+        }, 500);
     }
 
     return (
