@@ -76,12 +76,12 @@ function ImageContainer(props) {
             <div className="imageContainer">
                 <img src={props.image} onClick={handleInspect} className='image' />
                 <div className="imageControls">
-                    <div className='likes-container'>
-                        <img src={icon} onClick={handleSave} />
+                    <div className='likes-container' onClick={handleSave}>
+                        <img src={icon} />
                         <p>{numLikes}</p>
                     </div>
-                    <div className='download-container'>
-                        <img src="./assets/download.svg" onClick={handleDownload} />
+                    <div className='download-container' onClick={handleDownload}>
+                        <img src="./assets/download.svg" />
                     </div>
                     
                 </div>

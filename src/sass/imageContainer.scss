@@ -57,6 +57,7 @@
         & .likes-container:hover, .download-container:hover {
             background-color: #03633e;
             transition: all 0.5s;
+            cursor: pointer;
         }
 
         & .download-container {

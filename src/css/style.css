@@ -237,6 +237,7 @@ header .liked {
 .imageContainer .imageControls .likes-container:hover, .imageContainer .imageControls .download-container:hover {
   background-color: #03633e;
   transition: all 0.5s;
+  cursor: pointer;
 }
 .imageContainer .imageControls .download-container {
   transition: all 0.5s;
