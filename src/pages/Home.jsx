@@ -6,13 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPhotos, searchRandomPhotos, searchPhotos } from '../redux/slices/SearchSlice';
 function Home() {
     const dispatch = useDispatch();
-    const updatedImages = useSelector((state) => state.search.images);
+    const updatedImages = useSelector((state) => state.search.images) || [];
     const [sortedImages, setSortedImages] = useState([]);
-    const page = useSelector((state) => state.search.page);
+    const page = useSelector((state) => state.search.page) || 1;
     const [sortOption, setSortOption] = useState('Import Date ↑');
 
     useEffect(() => {
-        dispatch(fetchPhotos(page));
+        if (page) {
+            dispatch(fetchPhotos(page));
+        }
+
     }, [dispatch, page]);
 
     useEffect(() => {
@@ -63,15 +66,14 @@ function Home() {
 
     const handleSearch = (event) => {
         const inputNode = event.target.previousElementSibling;
-        
+
         if (!inputNode.value) {
             dispatch(searchRandomPhotos(inputNode.value));
         } else {
             dispatch(searchPhotos(inputNode.value));
         }
 
-        const imagesSearched = imagesUpdated;
-        setSortedImages(imagesSearched);
+        setSortedImages(updatedImages);
     }
 
     return (

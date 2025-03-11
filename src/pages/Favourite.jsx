@@ -11,6 +11,8 @@ function Favourite() {
     const images = useSelector((state) => state.favourite.images);
     const [filteredImages, setFilteredImages] = useState(images);
     const [filterValue, setFilterValue] = useState("");
+    
+
     useEffect(() => {
         let data = [];
         if (localStorage.images) {

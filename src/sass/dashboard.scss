@@ -38,6 +38,12 @@
     }
 }
 
+.pagination {
+    background-color: #A4FFF7;
+    align-content: center;
+    padding: 1rem 1rem;
+}
+
 @media screen and (min-width: 1200px) {
     .bg-blue {
         column-count: 3;
@@ -60,5 +66,11 @@
             height: 4.5rem;
             font-size: 1.5rem;
         }
+    }
+
+    .pagination {
+        background-color: #A4FFF7;
+        align-content: center;
+        padding: 1rem 45%;
     }
 }

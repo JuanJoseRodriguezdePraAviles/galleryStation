@@ -71,7 +71,7 @@ function ImageContainer(props) {
         icon = "./assets/dislike.svg";
         numLikes = props.image.likes;
     }
-    
+
     return (
         <>
             <div className="imageContainer">
@@ -84,7 +84,6 @@ function ImageContainer(props) {
                     <div className='download-container' onClick={handleDownload}>
                         <img src="./assets/download.svg" />
                     </div>
-                    
                 </div>
             </div>
             
