@@ -59,21 +59,31 @@ function Dashboard(props) {
     }
     return (
         <div>
-            <div className='bg-blue'>
-                {props.filteredImages ?
-                    props.filteredImages.map(image => (
-                        <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
-                            setInspectData={setInspectData} setImageClickedID={setImageClickedID}>
-                        </ImageContainer>
-                    ))
-                    :
-                    imagesFromPage.map(image => (
-                        <ImageContainer key={image.id} image={image} isInspectVisible={image.isInspectVisible} setIsInspectVisible={setIsInspectVisible}
-                            setInspectData={inspectData} setImageClickedID={setImageClickedID}>
-                        </ImageContainer>
-                    ))
-                }
-            </div>
+            {imagesFromPage.length !== 0 && (
+                <div className='bg-blue'>
+                    {props.filteredImages ?
+                        props.filteredImages.map(image => (
+                            <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                setInspectData={setInspectData} setImageClickedID={setImageClickedID}>
+                            </ImageContainer>
+                        ))
+                        :
+
+
+                        imagesFromPage.map(image => (
+                            <ImageContainer key={image.id} image={image} isInspectVisible={image.isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                            </ImageContainer>
+                        ))
+
+
+                    }
+
+
+                </div>
+            )}
+            {imagesFromPage.length === 0 && <p className="message">Your liked images will show here!</p>}
+
             {useLocation().pathname === '/' ?
                 <div className='load-more-container'>
                     <button className='btn-load-more' onClick={handleLoadMore}>Load More</button>

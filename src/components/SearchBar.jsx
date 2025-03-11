@@ -2,19 +2,21 @@ import './../css/style.css';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-function SearchBar(props) {  
+function SearchBar(props) {
     return (
         <>
             <div className="searchFilterContainer">
-                <div className="searchContainer">
-                    <input type="text" placeholder='Search photos'></input>
-                    <img src="./assets/searchIcon.svg" onClick={props.handleSearch} />
-                </div>
+                {useLocation().pathname === '/' &&
+                    <div className="searchContainer">
+                        <input type="text" placeholder='Search photos'></input>
+                        <img src="./assets/searchIcon.svg" onClick={props.handleSearch} />
+                    </div>
+                }
 
-                    {useLocation().pathname === '/'? 
+                {useLocation().pathname === '/' ?
                     <select className='filterContainer' onChange={(e) => {
-                            props.setSortOption(e.target.value)
-                        }}>
+                        props.setSortOption(e.target.value)
+                    }}>
                         <option value='Import Date ↑'>Import Date ↑</option>
                         <option value='Import Date ↓'>Import Date ↓</option>
                         <option value='Width ↑'>Width ↑</option>
@@ -25,9 +27,9 @@ function SearchBar(props) {
                         <option value='Likes ↓'>Likes ↓</option>
                     </select>
                     :
-                    <input type="text" className='filter' placeholder='Filter by description' onChange={(e)=> {
+                    <input type="text" className='filter' placeholder='Filter by description' onChange={(e) => {
                         props.setFilterValue(e.target.value);
-                    }}/>
+                    }} />
                 }
             </div>
         </>
