@@ -13,7 +13,6 @@ const favouritesSlice = createSlice(
                 state.images = [...action.payload];
             }
         }
-
     }
 );
 

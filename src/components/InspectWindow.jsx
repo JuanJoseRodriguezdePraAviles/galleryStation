@@ -25,8 +25,7 @@ function InspectWindow(props) {
 
     useEffect(() => {
         const data = JSON.parse(localStorage.images);
-        
-        if (data.length !== 2) {
+        if (data.length !== 0) {
             data.map((image) => {
                 if (image.id == props.images.id) {
                     setDescription(image.description);
@@ -36,6 +35,7 @@ function InspectWindow(props) {
     }, []);
 
     const handleChange = (e) => {
+        
         setDescription(e.target.value);
     }
 
@@ -69,38 +69,35 @@ function InspectWindow(props) {
 
     useEffect(() => {
         if(location.pathname === '/'){
-            props.images.map((image) => {
-                if (image.id === props.imageClickedID) {
-                    
-                    props.setInspectData({
-                        width: image.width,
-                        height: image.height,
-                        likes: image.likes,
-                        date: image.updated_at,
-                        description: image.description ? image.description : image.alt_description
-                    });
-                }
-            });
-        } else {
-            let images = JSON.parse(localStorage.images);
-            images.map((image) => {
-            if (image.id === props.imageClickedID) {
-                    
+            let imageData = props.images.find(image => (image.id === props.imageClickedID));
+            if(imageData){
                 props.setInspectData({
-                    width: image.width,
-                    height: image.height,
-                    likes: image.likes,
-                    date: image.updated_at,
-                    description: image.description ? image.description : image.alt_description
+                    width: imageData.width,
+                    height: imageData.height,
+                    likes: imageData.likes,
+                    date: imageData.updated_at,
+                    description: imageData.description ? imageData.description : imageData.alt_description
                 });
-            }})
+            }
+        } else {
+            let imageData = JSON.parse(localStorage.images).find((image) => (image.id === props.imageClickedID));
+            
+            if(imageData) {
+                props.setInspectData({
+                    width: imageData.width,
+                    height: imageData.height,
+                    likes: imageData.likes,
+                    date: imageData.updated_at,
+                    description: imageData.description ? imageData.description : imageData.alt_description
+                });
+            }
         }
-        
-
     }, [props.imageClickedID]);
 
     useEffect(() => {
-        setDescription(props.inspectData.description);
+        if(props.inspectData.description !== description) {
+            setDescription(props.inspectData.description);
+        }
     }, [props.inspectData]);
 
     if (!props.isInspectVisible) {
@@ -115,7 +112,7 @@ function InspectWindow(props) {
                     <p>Likes:{props.inspectData.likes}</p>
                     <p>Create at:{formatDate(props.inspectData.date)}</p>
                 </div>
-                {useLocation().pathname !== '/' ? <button className='btn-container' onClick={handleEdit}>{saved ? 'Edit description' : 'Save'}</button> : <></>}
+                {location.pathname !== '/' ? <button className='btn-container' onClick={handleEdit}>{saved ? 'Edit description' : 'Save'}</button> : <></>}
 
                 <div className='description-container'>
                     <h2>Description</h2>

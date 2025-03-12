@@ -1,8 +1,26 @@
 import './../css/style.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import Chip from '@mui/material/Chip';
+
 function SearchBar(props) {
+    const [tagClassFilter, setTagClassFilter] = useState('assignTag');
+    
+    const handleTagFilter = (e) => {
+        console.log("handle tag filter");
+        props.setTagFilter(!props.tagFilter);
+        if(!props.tagFilter){
+            setTagClassFilter('assignedTag');
+        } else {
+            setTagClassFilter('assignTag');
+        }
+        
+    }
+    console.log(tagClassFilter);
+
+
+
     return (
         <>
             <div className="searchFilterContainer">
@@ -27,9 +45,15 @@ function SearchBar(props) {
                         <option value='Likes ↓'>Likes ↓</option>
                     </select>
                     :
-                    <input type="text" className='filter' placeholder='Filter by description' onChange={(e) => {
-                        props.setFilterValue(e.target.value);
-                    }} />
+                    <>
+                        <input type="text" className='filter' placeholder='Filter by description' onChange={(e) => {
+                            props.setFilterValue(e.target.value);
+                        }} />
+                        <div className='tags'>
+                            <Chip label='Landscape' variant="outlined" className={tagClassFilter} onClick={handleTagFilter}/>
+                        </div>
+                        
+                    </>
                 }
             </div>
         </>

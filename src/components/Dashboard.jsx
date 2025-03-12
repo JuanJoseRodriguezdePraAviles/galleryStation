@@ -22,6 +22,8 @@ function Dashboard(props) {
     const [page, setPage] = useState(1);
     const [imagesFromPage, setImagesFromPage] = useState([]);
 
+    let location = useLocation();
+
     let maxPage = 0;
 
     if (props.filteredImages) {
@@ -39,14 +41,16 @@ function Dashboard(props) {
         if (props.images.length > 0) {
             for (let i = 0; i < props.images.length; i++) {
                 if (i < page * 9) {
-                    if (i > (page - 1) * 9) {
+                    if (i >= (page - 1) * 9) {
                         newImages.push(props.images[i]);
                     }
                 }
             }
         }
         setImagesFromPage(newImages);
-    }, [page, props.images]);
+    }, [page, props.images, props.tagFilter]);
+
+
 
     const handleLoadMore = () => {
         const scrollY = window.scrollY;
@@ -57,6 +61,20 @@ function Dashboard(props) {
             window.scrollTo({ top: scrollY, behavior: 'instant' });
         }, 500);
     }
+    useEffect(() => {
+        if(location.pathname === '/favourite'){
+            setImagesFromPage(JSON.parse(localStorage.images));
+        }
+    }, [location.pathname]);
+
+    useEffect(()=>{
+        console.log("useEffect", location.pathname);
+        if(location.pathname === '/favourite'){
+            console.log("Updating images");
+            setImagesFromPage(JSON.parse(localStorage.images));
+        }
+    }, [props.tagFilter]);
+    console.log(imagesFromPage);
     return (
         <div>
             {imagesFromPage.length !== 0 && (
@@ -68,18 +86,19 @@ function Dashboard(props) {
                             </ImageContainer>
                         ))
                         :
-
-
                         imagesFromPage.map(image => (
-                            <ImageContainer key={image.id} image={image} isInspectVisible={image.isInspectVisible} setIsInspectVisible={setIsInspectVisible}
-                                setInspectData={inspectData} setImageClickedID={setImageClickedID}>
-                            </ImageContainer>
+                            props.tagFilter ?
+                                image.tags.indexOf('Landscape')===0 &&
+                                <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                    setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                                </ImageContainer>
+                                :
+                                <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                    setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                                </ImageContainer>
+
                         ))
-
-
                     }
-
-
                 </div>
             )}
             {imagesFromPage.length === 0 && <p className="message">Your liked images will show here!</p>}

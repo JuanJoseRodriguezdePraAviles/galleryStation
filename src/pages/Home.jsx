@@ -72,14 +72,12 @@ function Home() {
         } else {
             dispatch(searchPhotos(inputNode.value));
         }
-
+        
         setSortedImages(updatedImages);
     }
-
     return (
         <>
             <SearchBar handleSearch={handleSearch} sortOption={sortOption} setSortOption={setSortOption} />
-
             <Dashboard key={sortedImages.length} images={updatedImages} filteredImages={sortedImages} />
         </>
     );

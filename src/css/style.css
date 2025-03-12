@@ -70,6 +70,27 @@ header .liked {
   top: 0.75rem;
   height: 2rem;
 }
+.searchFilterContainer .tags {
+  margin-top: 1rem;
+  margin-left: 10%;
+  display: inline-block;
+}
+.searchFilterContainer .tags .assignTag {
+  border-color: black;
+}
+.searchFilterContainer .tags .assignedTag {
+  background-color: #03BB85;
+  border: none;
+}
+.searchFilterContainer .tags .assignTag:hover {
+  cursor: pointer;
+  background-color: #03BB85;
+}
+.searchFilterContainer .assignTags {
+  width: 100%;
+  height: 50%;
+  padding: 0.5rem 1rem;
+}
 .searchFilterContainer .filterContainer, .searchFilterContainer .filter {
   cursor: pointer;
   margin-top: 1.2rem;
@@ -180,7 +201,7 @@ header .liked {
 .pagination {
   background-color: #A4FFF7;
   align-content: center;
-  padding: 1rem 1rem;
+  padding: 1rem 30%;
 }
 
 @media screen and (min-width: 1200px) {
@@ -222,12 +243,12 @@ header .liked {
 }
 .imageContainer .imageControls {
   background-color: #038554;
-  height: 4.625rem;
-  align-content: center;
+  height: 9.25rem;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
 }
 .imageContainer .imageControls img {
@@ -239,12 +260,9 @@ header .liked {
   transition: all 0.5s;
   display: flex;
   width: 50%;
-  height: 100%;
+  height: 50%;
   padding: 0 10%;
-  position: relative;
   align-items: center;
-  justify-content: center;
-  padding: 0 10%;
 }
 .imageContainer .imageControls .likes-container img,
 .imageContainer .imageControls .likes-container p {
@@ -265,14 +283,30 @@ header .liked {
   transition: all 0.5s;
   display: inline-block;
   width: 50%;
-  height: 100%;
-  padding: 0rem 20%;
+  height: 50%;
+  padding: 0rem 18%;
   position: relative;
   top: 0rem;
 }
 .imageContainer .imageControls .download-container img {
   padding-top: 1.25rem;
   margin-left: 1rem;
+}
+.imageContainer .imageControls .assignTags {
+  width: 100%;
+  height: 50%;
+  padding: 0.5rem 1rem;
+}
+.imageContainer .imageControls .assignTags .assignTag {
+  border-color: black;
+}
+.imageContainer .imageControls .assignTags .assignedTag {
+  background-color: #03BB85;
+  border: none;
+}
+.imageContainer .imageControls .assignTags .assignTag:hover {
+  cursor: pointer;
+  background-color: #03BB85;
 }
 
 @media screen and (min-width: 1200px) {

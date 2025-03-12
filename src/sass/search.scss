@@ -45,6 +45,31 @@
         }
     }
 
+    & .tags {
+        margin-top: 1rem;
+        margin-left: 10%;
+        display: inline-block;
+        & .assignTag {
+            border-color: black;
+        }
+        & .assignedTag {
+            background-color: #03BB85;
+            border: none;
+        }
+        & .assignTag:hover {
+            cursor: pointer;
+            background-color: #03BB85;
+        }
+    }
+    & .assignTags {
+        width: 100%;
+        height: 50%;
+        padding: 0.5rem 1rem;
+        
+    }
+    
+    
+
     
 
     & .filterContainer, & .filter {
