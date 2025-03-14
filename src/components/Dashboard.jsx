@@ -62,19 +62,17 @@ function Dashboard(props) {
         }, 500);
     }
     useEffect(() => {
-        if(location.pathname === '/favourite'){
+        if (location.pathname === '/favourite') {
             setImagesFromPage(JSON.parse(localStorage.images));
         }
     }, [location.pathname]);
 
-    useEffect(()=>{
-        console.log("useEffect", location.pathname);
-        if(location.pathname === '/favourite'){
-            console.log("Updating images");
+    useEffect(() => {
+        if (location.pathname === '/favourite') {
             setImagesFromPage(JSON.parse(localStorage.images));
         }
     }, [props.tagFilter]);
-    console.log(imagesFromPage);
+    
     return (
         <div>
             {imagesFromPage.length !== 0 && (
@@ -87,16 +85,26 @@ function Dashboard(props) {
                         ))
                         :
                         imagesFromPage.map(image => (
-                            props.tagFilter ?
-                                image.tags.indexOf('Landscape')===0 &&
-                                <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
-                                    setInspectData={inspectData} setImageClickedID={setImageClickedID}>
-                                </ImageContainer>
+                            props.tagFilter.landscape?
+                                props.tagFilter.portrait?
+                                    image.tags.indexOf('Landscape') !== -1 && image.tags.indexOf('Portrait') !== -1 &&
+                                        <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                            setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                                        </ImageContainer>
                                 :
-                                <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                    image.tags.indexOf('Landscape') !== -1 &&
+                                    <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
                                     setInspectData={inspectData} setImageClickedID={setImageClickedID}>
-                                </ImageContainer>
-
+                                    </ImageContainer>
+                            :
+                                props.tagFilter.portrait? image.tags.indexOf('Portrait') !== -1 &&
+                                    <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                        setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                                    </ImageContainer>
+                                    :
+                                    <ImageContainer key={image.id} image={image} isInspectVisible={isInspectVisible} setIsInspectVisible={setIsInspectVisible}
+                                        setInspectData={inspectData} setImageClickedID={setImageClickedID}>
+                                    </ImageContainer>
                         ))
                     }
                 </div>

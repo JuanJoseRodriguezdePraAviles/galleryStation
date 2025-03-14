@@ -5,22 +5,26 @@ import { useLocation } from 'react-router-dom';
 import Chip from '@mui/material/Chip';
 
 function SearchBar(props) {
-    const [tagClassFilter, setTagClassFilter] = useState('assignTag');
+    const [tagLandscapeClassFilter, setLandscapeTagClassFilter] = useState('assignTag');
+    const [tagPortraitClassFilter, setPortraitTagClassFilter] = useState('assignTag');
     
-    const handleTagFilter = (e) => {
-        console.log("handle tag filter");
-        props.setTagFilter(!props.tagFilter);
-        if(!props.tagFilter){
-            setTagClassFilter('assignedTag');
+    const handleLandscapeTagFilter = (e) => {
+        props.setTagFilter(prev => ({ ...prev, landscape: !prev.landscape }));
+        if(!props.tagFilter.landscape){
+            setLandscapeTagClassFilter('assignedTag');
         } else {
-            setTagClassFilter('assignTag');
+            setLandscapeTagClassFilter('assignTag');
         }
-        
     }
-    console.log(tagClassFilter);
 
-
-
+    const handlePortraitTagFilter = (e) => {
+        props.setTagFilter(prev => ({...prev, portrait: !prev.portrait}));
+        if(!props.tagFilter.portrait){
+            setPortraitTagClassFilter('assignedTag');
+        } else {
+            setPortraitTagClassFilter('assignTag');
+        }
+    }
     return (
         <>
             <div className="searchFilterContainer">
@@ -30,7 +34,6 @@ function SearchBar(props) {
                         <img src="./assets/searchIcon.svg" onClick={props.handleSearch} />
                     </div>
                 }
-
                 {useLocation().pathname === '/' ?
                     <select className='filterContainer' onChange={(e) => {
                         props.setSortOption(e.target.value)
@@ -50,7 +53,8 @@ function SearchBar(props) {
                             props.setFilterValue(e.target.value);
                         }} />
                         <div className='tags'>
-                            <Chip label='Landscape' variant="outlined" className={tagClassFilter} onClick={handleTagFilter}/>
+                            <Chip label='Landscape' variant="outlined" className={tagLandscapeClassFilter} onClick={handleLandscapeTagFilter}/>
+                            <Chip label='Portrait' variant="outlined" className={tagPortraitClassFilter} onClick={handlePortraitTagFilter}/>
                         </div>
                         
                     </>

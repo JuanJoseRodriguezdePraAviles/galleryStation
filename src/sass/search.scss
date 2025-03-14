@@ -51,10 +51,12 @@
         display: inline-block;
         & .assignTag {
             border-color: black;
+            margin: 0 0.5rem;
         }
         & .assignedTag {
             background-color: #03BB85;
             border: none;
+            margin: 0 0.5rem;
         }
         & .assignTag:hover {
             cursor: pointer;

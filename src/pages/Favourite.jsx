@@ -11,9 +11,14 @@ function Favourite() {
     const images = useSelector((state) => state.favourite.images);
     const [filteredImages, setFilteredImages] = useState(images);
     const [filterValue, setFilterValue] = useState("");
-    const [tagFilter, setTagFilter] = useState(false);
+    const [tagFilter, setTagFilter] = useState({
+        landscape: false,
+        portrait: false
+    });
+    
+    const [landscapeTagFilter, setLandscapeTagFilter] = useState(false);
+    const [portraitTagFilter, setPortraitTagFilter] = useState(false);
 
-    console.log("images", images);
     useEffect(() => {
         let data = [];
         if (localStorage.images) {
@@ -48,7 +53,6 @@ function Favourite() {
                 return null;
             }
         });
-        console.log("imagesSearched", imagesSearched);
         setFilteredImages(imagesSearched);
     }, [filterValue, images]);
 
@@ -58,17 +62,14 @@ function Favourite() {
         }
     }, [images]);
 
-    console.log("filteredImages", filteredImages);
     return (
         <>
-            <SearchBar handleSearch={handleSearch} filterValue={filterValue} setFilterValue={setFilterValue} tagFilter={tagFilter} setTagFilter={setTagFilter}>
-            </SearchBar>
+            <SearchBar handleSearch={handleSearch} filterValue={filterValue} setFilterValue={setFilterValue} tagFilter={tagFilter} setTagFilter={setTagFilter} />
             <h2 className='favouriteTitle'>My collection</h2>
             {!filteredImages ?
                 <p className='message'>You can add your favourites photos from home</p>
                 :
-                <Dashboard images={filteredImages} tagFilter={tagFilter}>
-                </Dashboard>
+                <Dashboard images={filteredImages} tagFilter={tagFilter}/>
             }
         </>
     );

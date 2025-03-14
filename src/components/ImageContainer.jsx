@@ -6,18 +6,21 @@ import { Landscape } from '@mui/icons-material';
 
 function ImageContainer(props) {
     const [like, setLike] = useState(false);
-    const [tag, setTag] = useState(false);
+    const [landscapeTag, setLandscapeTag] = useState(false);
+    const [portraitTag, setPortraitTag] = useState(false);
     const location = useLocation();
     useEffect(() => {
         if (localStorage.images) {
             JSON.parse(localStorage.images).map((image) => {
                 if (image.id === props.image.id) {
                     setLike(true);
-                    if (image.tags.indexOf('Landscape') === 0) {
-                        setTag(true);
+                    if (image.tags.indexOf('Landscape') !== -1) {
+                        setLandscapeTag(true);
+                    }
+                    if (image.tags.indexOf('Portrait') !== -1) {
+                        setPortraitTag(true);
                     }
                 }
-
             })
         }
     }, []);
@@ -73,20 +76,41 @@ function ImageContainer(props) {
         window.location.href = `${props.image}&force=true`;
     }
 
-    let tagClass = 'assignTag';
+    let tagLandscapeClass = 'assignTag';
+    let tagPortraitClass = 'assignTag';
 
-    const handleTag = (e) => {
+    const handleLandscapeTag = (e) => {
         const updatedImages = JSON.parse(localStorage.images).map((image) => {
 
             if (image.id === props.image.id) {
                 let imageUpdate = image;
                 if (imageUpdate.tags.indexOf('Landscape') === -1) {
                     imageUpdate.tags.push('Landscape');
-                    setTag(true)
+                    setLandscapeTag(true)
                 } else {
                     imageUpdate.tags.splice(imageUpdate.tags.indexOf('Landscape'), 1);
-                    tagClass = 'assignTag';
-                    setTag(false);
+                    tagLandscapeClass = 'assignTag';
+                    setLandscapeTag(false);
+                }
+                return imageUpdate;
+            };
+            return image;
+        });
+        localStorage.setItem('images', JSON.stringify(updatedImages));
+    }
+
+    const handlePortraitTag = (e) => {
+        const updatedImages = JSON.parse(localStorage.images).map((image) => {
+
+            if (image.id === props.image.id) {
+                let imageUpdate = image;
+                if (imageUpdate.tags.indexOf('Portrait') === -1) {
+                    imageUpdate.tags.push('Portrait');
+                    setPortraitTag(true)
+                } else {
+                    imageUpdate.tags.splice(imageUpdate.tags.indexOf('Portrait'), 1);
+                    tagLandscapeClass = 'assignTag';
+                    setPortraitTag(false);
                 }
                 return imageUpdate;
             };
@@ -104,10 +128,16 @@ function ImageContainer(props) {
         numLikes = props.image.likes;
     }
 
-    if (tag) {
-        tagClass = 'assignedTag';
+    if (landscapeTag) {
+        tagLandscapeClass = 'assignedTag';
     } else {
-        tagClass = 'assignTag';
+        tagLandscapeClass = 'assignTag';
+    }
+
+    if (portraitTag) {
+        tagPortraitClass = 'assignedTag';
+    } else {
+        tagPortraitClass = 'assignTag';
     }
 
     return (
@@ -124,7 +154,8 @@ function ImageContainer(props) {
                     </div>
                     {location.pathname !== '/' &&
                         <div className='assignTags'>
-                            <Chip label='Landscape' variant="outlined" className={tagClass} onClick={handleTag} />
+                            <Chip label='Landscape' variant="outlined" className={tagLandscapeClass} onClick={handleLandscapeTag} />
+                            <Chip label='Portrait' variant="outlined" className={tagPortraitClass} onClick={handlePortraitTag} />
                         </div>
                     }
                 </div>

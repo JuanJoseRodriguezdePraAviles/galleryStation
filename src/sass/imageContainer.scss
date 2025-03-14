@@ -13,7 +13,8 @@
 
     & .imageControls {
         background-color: #038554;
-        height: 9.25rem;
+        height: auto;
+        padding: 0rem 0;
         position: relative;
         display: flex;
         align-items: top;
@@ -33,8 +34,9 @@
             transition: all 0.5s;
             display: flex;
             width: 50%;
-            height: 50%;
-            padding: 0 10%;
+            height: 100%;
+            padding: 1rem 15%;
+            
             align-items: center;
 
             & img,
@@ -61,25 +63,27 @@
             display: inline-block;
             width: 50%;
             height: 50%;
-            padding: 0rem 18%;
+            padding: 1rem 18%;
             position: relative;
             top: 0rem;
-
+            padding-top: 1rem;
             & img {
-                padding-top: 1.25rem;
+                padding-top: 0rem;
                 margin-left: 1rem;
             }
         }
         & .assignTags {
             width: 100%;
             height: 50%;
-            padding: 0.5rem 1rem;
+            padding: 1rem 1rem;
             & .assignTag {
                 border-color: black;
+                margin: 0 0.5rem;
             }
             & .assignedTag {
                 background-color: #03BB85;
                 border: none;
+                margin: 0 0.5rem;
             }
             & .assignTag:hover {
                 cursor: pointer;
